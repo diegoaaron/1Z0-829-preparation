@@ -34,7 +34,7 @@ Some future program could create a subclass of `Throwable` that does implement `
     }
   }
 ```
-[Pattern Matching](../src/main/java/org/enricogiurin/ocp17/book/ch3/PatternMatching.java)
+[Pattern Matching](../src/main/java/org/diegodamian/ocp17/book/ch3/PatternMatching.java)
 
 ### Pattern Matching - subtype
 Pattern variable type must be a **strict subtype** of the Type under test.
@@ -90,7 +90,7 @@ switch (x){
       System.out.println("default");
 }
 ```
-[strange switch](../src/main/java/org/enricogiurin/ocp17/book/ch3/usageofswitch/StrangeSwitch.java)
+[strange switch](../src/main/java/org/diegodamian/ocp17/book/ch3/usageofswitch/StrangeSwitch.java)
 
 ### Switch supported types
  - int,byte, short, char
@@ -137,4 +137,4 @@ var goal = switch (myScore) {
     }
 }
 ```
-[Switch expression with yield](../src/main/java/org/enricogiurin/ocp17/book/ch3/usageofswitch/SwitchExpressionWithYield.java)
+[Switch expression with yield](../src/main/java/org/diegodamian/ocp17/book/ch3/usageofswitch/SwitchExpressionWithYield.java)

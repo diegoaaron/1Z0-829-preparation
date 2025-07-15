@@ -45,9 +45,9 @@ list.remove(2); //[5,3,1]
 //this removes element 1 as here we call remove(Object obj)
 list.remove(Integer.valueOf(1)); //[5, 3]
 ```
-[Overloading of remove](../src/main/java/org/enricogiurin/ocp17/book/ch9/RemoveFromList.java)
+[Overloading of remove](../src/main/java/org/diegodamian/ocp17/book/ch9/RemoveFromList.java)
 ### Creating a List with Factory
-[List Factory](../src/main/java/org/enricogiurin/ocp17/book/ch9/CreatingListWithFactory.java)
+[List Factory](../src/main/java/org/diegodamian/ocp17/book/ch9/CreatingListWithFactory.java)
 ## Comparator
 package: `java.util`
 ```java
@@ -108,7 +108,7 @@ public E peekLast();
 public E pollFirst();
 public E pollLast();
 ```
-[Example Deque](../src/main/java/org/enricogiurin/ocp17/book/ch9/UsageOfDeque.java)
+[Example Deque](../src/main/java/org/diegodamian/ocp17/book/ch9/UsageOfDeque.java)
 
 ```java
 //The offer() method inserts an element at the end of the queue
@@ -123,7 +123,7 @@ System.out.print(q.peek() + " " + q.size()); // dog 3
 public interface Deque<E> extends Queue<E> {/**/}
 ```
 
-[DequeAsAStack](../src/main/java/org/enricogiurin/ocp17/book/ch9/DequeAsAStack.java)
+[DequeAsAStack](../src/main/java/org/diegodamian/ocp17/book/ch9/DequeAsAStack.java)
 ### Stack
 ![Stack](images/Deque-Stack.png)
 
@@ -158,12 +158,12 @@ map.put(1, null);
 ///If the specified key is not already associated with a value or is associated with null, associates it with the given non-null value
 map.merge(1, 4, (v1, v2)->v1+v2);  //[1,4]
 ```
-[MapMerge](../src/main/java/org/enricogiurin/ocp17/book/ch9/map/MapMerge.java)
+[MapMerge](../src/main/java/org/diegodamian/ocp17/book/ch9/map/MapMerge.java)
 
 ### TreeMap
 Keys added to `TreeMap` need to implement `Comparable`, as less as a `Comparator` is provided.  
 
-[Usage Of TreeMap](../src/main/java/org/enricogiurin/ocp17/book/ch9/map/UsageOfTreeMap.java)
+[Usage Of TreeMap](../src/main/java/org/diegodamian/ocp17/book/ch9/map/UsageOfTreeMap.java)
 ```java
 Map map = new TreeMap<>();
 map.put(1, "2");

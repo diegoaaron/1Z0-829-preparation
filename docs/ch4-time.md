@@ -32,7 +32,7 @@ var days = Duration.ofDays(1);
 System.out.println(date.plus(days));    
 ```
 ## Period
-[Usage Of Period](../src/main/java/org/enricogiurin/ocp17/book/ch4/time/UsageOfPeriod.java)
+[Usage Of Period](../src/main/java/org/diegodamian/ocp17/book/ch4/time/UsageOfPeriod.java)
 ### static vs instance 
 - `Period.of()`: static method (does not chain);
 - `Period.plus()`: instance, does chain
@@ -63,7 +63,7 @@ P2Y3M6D
 ## Instant
 The Instant class represents a specific moment in time in the GMT time zone.
 
-[Instant](../src/main/java/org/enricogiurin/ocp17/book/ch4/time/UsageOfInstant.java)
+[Instant](../src/main/java/org/diegodamian/ocp17/book/ch4/time/UsageOfInstant.java)
 ### Format
 ```shell
 YYYY-MM-DDTHH:mm:ss.SSSZ
@@ -106,4 +106,4 @@ ZonedDateTime zdt1 = ZonedDateTime.of(date, time, zone);
 ZonedDateTime zdt2 = zdt1.plus(1, ChronoUnit.HOURS);
 long between = ChronoUnit.HOURS.between(zdt1, zdt2);
 ```
-[ChronoUnit](../src/main/java/org/enricogiurin/ocp17/book/ch4/time/UsageOfChronoUnit.java)
+[ChronoUnit](../src/main/java/org/diegodamian/ocp17/book/ch4/time/UsageOfChronoUnit.java)

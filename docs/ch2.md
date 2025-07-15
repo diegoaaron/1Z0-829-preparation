@@ -156,7 +156,7 @@ All the primitive types can be cast to Object.
     //inconvertible types; cannot cast 'int' to 'java.lang.Float'
     //Float aFloat = (Float)i;  DOES NOT COMPILE
 ```
-[Casting](../src/main/java/org/enricogiurin/ocp17/book/ch2/Casting.java)
+[Casting](../src/main/java/org/diegodamian/ocp17/book/ch2/Casting.java)
 
 ## Java Operator Precedence
 By decreasing order, highest to the lowest.

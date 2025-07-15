@@ -39,9 +39,9 @@ public void go() {
     Walk.super.go();
 }
 ```
-[Full Example](../src/main/java/org/enricogiurin/ocp17/book/ch7/interfaces/defaultmethods/InheritTwoDefaultMethods.java)
+[Full Example](../src/main/java/org/diegodamian/ocp17/book/ch7/interfaces/defaultmethods/InheritTwoDefaultMethods.java)
 #### Case abstract class
-[Abstract class default methods](../src/main/java/org/enricogiurin/ocp17/book/ch7/interfaces/defaultmethods/AbstractClassDefaultMethods.java)
+[Abstract class default methods](../src/main/java/org/diegodamian/ocp17/book/ch7/interfaces/defaultmethods/AbstractClassDefaultMethods.java)
 
 #### default conflict abstract method
 ```java
@@ -59,7 +59,7 @@ class HomeOffice implements Office, House {
   public void work() {}
 }
 ```
-[default vs abstract conflict](../src/main/java/org/enricogiurin/ocp17/book/ch7/interfaces/defaultmethods/DefaultVsAbstractConflict.java)
+[default vs abstract conflict](../src/main/java/org/diegodamian/ocp17/book/ch7/interfaces/defaultmethods/DefaultVsAbstractConflict.java)
 ### private methods
 A private interface method **cannot** be called in a method outside the interface declaration.
 
@@ -87,7 +87,7 @@ to prevent errors.
 First, if a class or interface inherits two interfaces containing default methods with the same
 signature, it must override the method with its own implementation.
 
-[Inherit two default methods with the same signature](../src/main/java/org/enricogiurin/ocp17/book/ch7/interfaces/defaultmethods/InheritTwoDefaultMethods.java)
+[Inherit two default methods with the same signature](../src/main/java/org/diegodamian/ocp17/book/ch7/interfaces/defaultmethods/InheritTwoDefaultMethods.java)
 
 #### Methods accessible by default method
 A default method can invoke any other type of method within the interface:
@@ -97,7 +97,7 @@ A default method can invoke any other type of method within the interface:
 - private static methods
 - other default methods
 
-[DefaultMethodCallingOtherMethods](../src/main/java/org/enricogiurin/ocp17/book/ch7/interfaces/defaultmethods/DefaultMethodCallingOtherMethods.java)
+[DefaultMethodCallingOtherMethods](../src/main/java/org/diegodamian/ocp17/book/ch7/interfaces/defaultmethods/DefaultMethodCallingOtherMethods.java)
 ### static methods
 
 ```java
@@ -116,7 +116,7 @@ class MyCertifications implements Certifications {
 }
 ```
 
-[interface with static methods](../src/main/java/org/enricogiurin/ocp17/book/ch7/interfaces/InterfaceWithStaticMethods.java)
+[interface with static methods](../src/main/java/org/diegodamian/ocp17/book/ch7/interfaces/InterfaceWithStaticMethods.java)
 ## Sealed
 A sealed class requires at least one subclass to extend.   
 
@@ -151,7 +151,7 @@ public final class Dog implements Pet {}
 // Interface permitted to extend sealed interface pet
 public non-sealed interface Rabbit extends Pet {}
 ```
-[Example of sealed interface](../src/main/java/org/enricogiurin/ocp17/book/ch7/sealed/interfaces/Pet.java)
+[Example of sealed interface](../src/main/java/org/diegodamian/ocp17/book/ch7/sealed/interfaces/Pet.java)
 
 ### Different files
 ```java
@@ -180,7 +180,7 @@ provided they are in the same named module.
     public final class Dog extends Pet {}
   }
 ```
-[sealed nested](../src/main/java/org/enricogiurin/ocp17/book/ch7/sealed/SealedNested.java)
+[sealed nested](../src/main/java/org/diegodamian/ocp17/book/ch7/sealed/SealedNested.java)
 
 ## Final
 ```java
@@ -291,7 +291,7 @@ It is illegal to access (not final) static member from enum constructor or insta
     }
   }
 ```
-[Enum With Fields](../src/main/java/org/enricogiurin/ocp17/book/ch7/useofenum/SeasonWithValues.java)
+[Enum With Fields](../src/main/java/org/diegodamian/ocp17/book/ch7/useofenum/SeasonWithValues.java)
 
 ### Comparable
 all the enum implements `Comparable`.
@@ -328,7 +328,7 @@ class University {
   }
 }
 ```
-[University](../src/main/java/org/enricogiurin/ocp17/book/ch7/nested/inner/University.java)
+[University](../src/main/java/org/diegodamian/ocp17/book/ch7/nested/inner/University.java)
 ### Nested Local Class
 A local class can access only final and effectively final local variables.
 ```java
@@ -344,4 +344,4 @@ A local class can access only final and effectively final local variables.
     size = 0;
   }
 ```
-[Nested Local Class](../src/main/java/org/enricogiurin/ocp17/book/ch7/nested/local/ArraySorter.java)
+[Nested Local Class](../src/main/java/org/diegodamian/ocp17/book/ch7/nested/local/ArraySorter.java)

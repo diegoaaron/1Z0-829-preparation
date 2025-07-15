@@ -57,7 +57,7 @@ var sb = new StringBuilder("hello");
 sb.append(" World");
 
 ```
-[StringBuilder Methods](../src/main/java/org/enricogiurin/ocp17/book/ch4/UsageOfStringBuilder.java)
+[StringBuilder Methods](../src/main/java/org/diegodamian/ocp17/book/ch4/UsageOfStringBuilder.java)
 
 ## Arrays
 ```jshelllanguage
@@ -93,7 +93,7 @@ int[][] matrix3 = {{1,2}, {3}};
 
 //int[][] matrix4 = new int[2][1]{{1,2}, {3}};  //does not compile
 ```
-[Multi Dimensional Array](../src/main/java/org/enricogiurin/ocp17/book/ch4/array/MultiDimensionalArray.java)
+[Multi Dimensional Array](../src/main/java/org/diegodamian/ocp17/book/ch4/array/MultiDimensionalArray.java)
 
 ### mismatch
 ```java
@@ -181,7 +181,7 @@ It prints:
  567
 #
 ```
-[indent](../src/main/java/org/enricogiurin/ocp17/book/ch4/string/BasicIndent.java)
+[indent](../src/main/java/org/diegodamian/ocp17/book/ch4/string/BasicIndent.java)
 
 ### translateEscapes
 `\n` - new line
@@ -201,4 +201,4 @@ System.out.println(source);
 //  1 2
 System.out.println(source.translateEscapes());
 ```
-[translateEscapes](../src/main/java/org/enricogiurin/ocp17/book/ch4/string/TranslatingEscapes.java)
+[translateEscapes](../src/main/java/org/diegodamian/ocp17/book/ch4/string/TranslatingEscapes.java)

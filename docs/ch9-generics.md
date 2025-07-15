@@ -25,7 +25,7 @@ class Ball<X>{
 
 }
 ```
-[Class and methods with generics](../src/main/java/org/enricogiurin/ocp17/book/ch9/generics/ClassAndMethodsWithGenerics.java)
+[Class and methods with generics](../src/main/java/org/diegodamian/ocp17/book/ch9/generics/ClassAndMethodsWithGenerics.java)
 
 ## Diamond Operator
 ```java
@@ -59,15 +59,15 @@ public static void invokePrintMessage() {
     ("D"));
 }
 ```
-[Static Methods Generics](../src/main/java/org/enricogiurin/ocp17/book/ch9/generics/StaticMethodGenerics.java)
+[Static Methods Generics](../src/main/java/org/diegodamian/ocp17/book/ch9/generics/StaticMethodGenerics.java)
 ### Instance Methods
 ```java
  public <T> T getFirstElement(T[] array) {/*...*/}
 ```
 
-[GenericsInClassAndMethods](../src/main/java/org/enricogiurin/ocp17/book/ch9/generics/GenericsInClassAndMethods.java)
+[GenericsInClassAndMethods](../src/main/java/org/diegodamian/ocp17/book/ch9/generics/GenericsInClassAndMethods.java)
 ## Instantiate with generics
-[Example](../src/main/java/org/enricogiurin/ocp17/book/ch9/generics/InstantiateClassWithGenerics.java)
+[Example](../src/main/java/org/diegodamian/ocp17/book/ch9/generics/InstantiateClassWithGenerics.java)
 ## Bounding Generic Types
 ### Upper-Bounded wildcards
 
@@ -108,7 +108,7 @@ List<? super IOException> ioExceptions = new ArrayList<Exception>();  //compiles
     List<? super IOException> listSuper = new ArrayList<Object>();
 ```
 
-[Example wildcard](../src/main/java/org/enricogiurin/ocp17/book/ch9/generics/CollectionsOfGenericsWithWildcard.java)
+[Example wildcard](../src/main/java/org/diegodamian/ocp17/book/ch9/generics/CollectionsOfGenericsWithWildcard.java)
 
 ### Bounded with Classes (not collections)
 ```java
@@ -126,7 +126,7 @@ List<? super IOException> ioExceptions = new ArrayList<Exception>();  //compiles
   //lower-bounded
   Cage<? super Pet> lowerBounded2 = new Cage<Pet>(); 
 ```
-[Classes With Lower and Upper Bounded](../src/main/java/org/enricogiurin/ocp17/book/ch9/generics/ClassesWithWildcards.java)
+[Classes With Lower and Upper Bounded](../src/main/java/org/diegodamian/ocp17/book/ch9/generics/ClassesWithWildcards.java)
 
 ## Inheritance of methods with generics
-[Generic Methods](../src/main/java/org/enricogiurin/ocp17/book/ch9/generics/ComplexInheritanceWithGenerics.java)
+[Generic Methods](../src/main/java/org/diegodamian/ocp17/book/ch9/generics/ComplexInheritanceWithGenerics.java)

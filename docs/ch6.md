@@ -74,7 +74,7 @@ class Jaguar extends Feline implements Run {...}
 ### Override instance vs static methods
 Instance method cannot override static method 
 
-[Extends with static methods](../src/main/java/org/enricogiurin/ocp17/book/ch6/TrickyHidingStaticMethods.java)
+[Extends with static methods](../src/main/java/org/diegodamian/ocp17/book/ch6/TrickyHidingStaticMethods.java)
 
 ### Override/Overload private methods - wrong
 There is no override/overload when the method in the parent class is marked private.
@@ -144,11 +144,11 @@ public class Fly extends Insect {
 Instance variables **are not overridden**, they are hidden.
 Polymorphism and overriding do not apply to instance variables.
 
-[Hiding Variables](../src/main/java/org/enricogiurin/ocp17/book/ch6/inheritance/HidingVariables.java)  
+[Hiding Variables](../src/main/java/org/diegodamian/ocp17/book/ch6/inheritance/HidingVariables.java)  
 
-[Hiding Variables - 2](../src/main/java/org/enricogiurin/ocp17/book/ch6/inheritance/OverrideInstanceVariables.java)
+[Hiding Variables - 2](../src/main/java/org/diegodamian/ocp17/book/ch6/inheritance/OverrideInstanceVariables.java)
 
-[Parent - Child example](../src/main/java/org/enricogiurin/ocp17/book/ch6/overriding/Child.java)
+[Parent - Child example](../src/main/java/org/diegodamian/ocp17/book/ch6/overriding/Child.java)
 
 
 ## static final
@@ -164,5 +164,5 @@ class Child extends Parent {
 }
 ```
 
-[hinding static methods](../src/main/java/org/enricogiurin/ocp17/book/ch6/HidingStaticMethods.java)
+[hinding static methods](../src/main/java/org/diegodamian/ocp17/book/ch6/HidingStaticMethods.java)
 The static method message() is marked final, so it cannot be hidden in the subclass.

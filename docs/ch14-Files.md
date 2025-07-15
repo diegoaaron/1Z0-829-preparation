@@ -7,15 +7,15 @@ It throws a checked exception. Mind the `IOException`!
 public static boolean deleteIfExists(Path path)
                               throws IOException
 ```
-[delete](../src/main/java/org/enricogiurin/ocp17/book/ch14/filesmethods/Delete.java)
+[delete](../src/main/java/org/diegodamian/ocp17/book/ch14/filesmethods/Delete.java)
 ### delete()
 It throws a checked exception. Mind the `IOException`!
 ```java
 Files.delete(path);
 ```
-[delete](../src/main/java/org/enricogiurin/ocp17/book/ch14/filesmethods/Delete.java)
+[delete](../src/main/java/org/diegodamian/ocp17/book/ch14/filesmethods/Delete.java)
 ## Browsing files
-[browsing](../src/main/java/org/enricogiurin/ocp17/book/ch14/filesmethods/BrowsingPaths.java)
+[browsing](../src/main/java/org/diegodamian/ocp17/book/ch14/filesmethods/BrowsingPaths.java)
 ### list
 It provides a simple and flat listing of the files and directories within the specified directory.  
 It throws a checked exception. Mind the `IOException`!
@@ -42,7 +42,7 @@ public static Stream<Path> walk(Path start, int maxDepth,
    FileVisitOption… options) throws IOException
 ```
 
-[walk](../src/main/java/org/enricogiurin/ocp17/book/ch14/filesmethods/WalkDirectory.java)
+[walk](../src/main/java/org/diegodamian/ocp17/book/ch14/filesmethods/WalkDirectory.java)
 
 ## createDirectories
 ```java
@@ -51,9 +51,9 @@ dir = Files.createDirectories(dir);
 ```
 Unlike the `createDirectory()` method, an exception is not thrown if the directory could not be created because it already exists.  
 It is _createDirectories()_ and **NOT** _mkdir()_.  
-[createDirectories](../src/main/java/org/enricogiurin/ocp17/book/ch14/filesmethods/CreateDirectories.java)
+[createDirectories](../src/main/java/org/diegodamian/ocp17/book/ch14/filesmethods/CreateDirectories.java)
 ## Read lines
-[read lines](../src/main/java/org/enricogiurin/ocp17/book/ch14/filesmethods/ReadLines.java)
+[read lines](../src/main/java/org/diegodamian/ocp17/book/ch14/filesmethods/ReadLines.java)
 ### readAllLines
 Mind the `IOException` !
 
@@ -70,7 +70,7 @@ Stream<String> stream = Files.lines(pom)
 ```
 
 ## isSameFile
-[IsSameFile](../src/main/java/org/enricogiurin/ocp17/book/ch14/filesmethods/IsSameFile.java)
+[IsSameFile](../src/main/java/org/diegodamian/ocp17/book/ch14/filesmethods/IsSameFile.java)
 ```java
 boolean result = Files.isSameFile(p1, p2);
 ```
@@ -95,4 +95,4 @@ long mismatch = Files.mismatch(hello, hello);  //-1
 ## File Attributes
 - BasicFileAttributes
 - BasicFileAttributeView  
-[File Attributes](../src/main/java/org/enricogiurin/ocp17/book/ch14/ReadAttributes.java)
+[File Attributes](../src/main/java/org/diegodamian/ocp17/book/ch14/ReadAttributes.java)

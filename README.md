@@ -1,12 +1,15 @@
 # Java SE 17 Developer
-Preparation for exam: Java SE 17 Developer  
+Preparación para el examen: Java SE 17 Developer  
 Exam Number: 1Z0-829
-## Show Your Support!
-If you find this project helpful in your 1Z0-829 exam preparation journey, please consider giving it a ⭐️ to help others discover it!
 
+## Que encontraras
+Este repositorio contiene apuntes, diagramas mentales y código que siguen la estructura del libro 
+"OCP Oracle Certified Professional Java SE 17 Developer STUDY GUIDE EXAM 1Z0-829"
 
+## Como utilizarlo
+Toma un capitulo del libro mencionado y revisa los apuntes, diagramas y código que se encuentran en la carpeta `docs` y `src`.
 
-## Chapters
+## Capítulos
 1. [Building Blocks](docs/ch1.md)
 2. [Operators](docs/ch2.md)
 3. [Making Decisions](docs/ch3.md)

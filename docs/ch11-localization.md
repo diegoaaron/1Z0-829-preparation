@@ -9,7 +9,7 @@ LocalDateTime now = LocalDateTime.now();
 String time = now.format(dateTimeFormatter);
 System.out.println(time);  //22-09-2023 - 08:44:55
 ```
-[format java time](../src/main/java/org/enricogiurin/ocp17/book/ch11/javatime/FormatJavaTime.java)
+[format java time](../src/main/java/org/diegodamian/ocp17/book/ch11/javatime/FormatJavaTime.java)
 ### ofLoc
 //TBC
 
@@ -24,7 +24,7 @@ NumberFormat nf = new DecimalFormat(format);
 String result = nf.format(wealth);
 System.out.println(result); //500,000.450000
 ```
-[UsageOfDecimalFormat](../src/main/java/org/enricogiurin/ocp17/book/ch11/UsageOfDecimalFormat.java)
+[UsageOfDecimalFormat](../src/main/java/org/diegodamian/ocp17/book/ch11/UsageOfDecimalFormat.java)
 
 ### CompactNumberFormat
 A `CompactNumberFormat` rounds to the nearest whole number within the **three-digit** range.
@@ -64,7 +64,7 @@ Locale.setDefault(Category.DISPLAY, Locale.UK);
 System.out.print(NumberFormat.getCurrencyInstance()
     .format(amount));  //12,30 €
 ```
-[Formatting Currency](../src/main/java/org/enricogiurin/ocp17/book/ch11/FormattingCurrency.java)
+[Formatting Currency](../src/main/java/org/diegodamian/ocp17/book/ch11/FormattingCurrency.java)
 ## Locale
 In Java, a locale can be represented by a language code in lowercase, or a language and country code, with language in lowercase and 
 country in uppercase.
@@ -82,7 +82,7 @@ country in uppercase.
 Local wrong_enUS = new Locale("en_US"));  //wrong way to load
 Local right_enUS = new Locale("en", "US"));  //proper way
 ```
-[Creation of Locale](../src/main/java/org/enricogiurin/ocp17/book/ch11/CreationOfLocale.java)
+[Creation of Locale](../src/main/java/org/diegodamian/ocp17/book/ch11/CreationOfLocale.java)
 
 ### Locale entities
 Oracle defines a locale as a:
