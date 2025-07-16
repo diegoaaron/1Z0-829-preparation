@@ -1,13 +1,24 @@
-# Beyond Classes
+# Cap. 07 - Beyond Classes
 
-## Interface
+## Interfaces
+
+Tipo de dato abstracto que define una lista de métodos abstractos en la que cualquier clase que implemente la interfaz debe aprovisionarlos.
+
+- una interfaz solo puede contener métodos abstractos, estáticos, por defecto y constantes.
+- una interfaz puede estar totalmente vacía.
+
 ```java
-public abstract interface Run { //abstract implicit modifiers
+public abstract interface CanBurrow {
+    public abstract Float getSpeed(int age);
 
-  public abstract void run();  //public abstract implicit modifiers
+    public static final int MINIUM_DEPTH = 1;
 }
 ```
-Concise form:
+```java
+public abstract  interface WalksOnTwoLegs {}
+```
+
+Forma concisa de definir una interfaz:
 
 ```java
 public interface Run {
