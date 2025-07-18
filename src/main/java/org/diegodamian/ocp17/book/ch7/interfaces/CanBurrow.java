@@ -5,3 +5,5 @@ public abstract interface CanBurrow {
 
     public static final int MINIUM_DEPTH = 1;
 }
+
+// ch07_01

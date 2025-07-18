@@ -4,8 +4,8 @@
 
 Tipo de dato abstracto que define una lista de métodos abstractos en la que cualquier clase que implemente la interfaz debe aprovisionarlos.
 
-- una interfaz solo puede contener métodos abstractos, estáticos, por defecto y constantes.
-- una interfaz puede estar totalmente vacía.
+* una interfaz solo puede contener métodos abstractos, estáticos, por defecto y constantes.
+* una interfaz puede estar totalmente vacía.
 
 ```java
 public abstract interface CanBurrow {
@@ -14,8 +14,26 @@ public abstract interface CanBurrow {
     public static final int MINIUM_DEPTH = 1;
 }
 ```
+* una interfaz siempre es considerada abstracta
+* una interfaz tiene modificadores implícitos a diferencia de las clases abstractas
+* una interfaz no requiere tener definido ningún método para existir
+
+_un modificador implícito es uno que el compilador inserta automáticamente en el código_
+
 ```java
-public abstract  interface WalksOnTwoLegs {}
+// compila
+public abstract interface WalksOnTwoLegs {}
+
+public class Biped {
+    public static void main(String[] args) {
+        // no compila porque no una interfaz no puede ser instanciada 
+        var e = new WalksOnTwoLegs();
+
+    }
+}
+
+// no compila porque una interfaz no puede ser marcada como final (marcarla asi indicaria que no se puede utilizar por otra clase)
+public final interface WalksOnEightLegs {}
 ```
 
 Forma concisa de definir una interfaz:
