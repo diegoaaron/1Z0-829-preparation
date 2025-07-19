@@ -18,7 +18,7 @@ public abstract interface CanBurrow {
 * una interfaz tiene modificadores implícitos a diferencia de las clases abstractas
 * una interfaz no requiere tener definido ningún método para existir
 
-_un modificador implícito es uno que el compilador inserta automáticamente en el código_
+_Un modificador implícito es uno que el compilador inserta automáticamente en el código_
 
 ```java
 // compila
@@ -36,12 +36,28 @@ public class Biped {
 public final interface WalksOnEightLegs {}
 ```
 
-Forma concisa de definir una interfaz:
+Haciendo uso de las interfaces a través de la palabra reservada `implements`:
+
+* El modificador de acceso del método de la interfaz es implícitamente público en Climb, pero la clase FieldMouse debe declararlo explícitamente.
+* Una clase puede implementar múltiples interfaces, separándolas con una `,` coma.
 
 ```java
-public interface Run {
-  void run();
+public interface Climb {
+    Number getSpeed(int age);
 }
+
+public class FieldMouse implements Climb, CanBurrow {
+
+    // implementación del método de la interfaz Climb
+    public Float getSpeed(int age) {
+        return 11f; // retorna un tipo covariante
+    }
+}
+
+// La covarianza en tipos de retorno significa que cuando una subclase o implementación sobrescribe un método, 
+// puede devolver un tipo que es más específico (una subclase) del tipo declarado originalmente.
+// en este caso, FieldMouse implementa el método getSpeed de la interfaz Climb, devolviendo un Float, 
+// cuando el método original devuelve un Number.
 ```
 An interface cannot be marked as final
 ```java
