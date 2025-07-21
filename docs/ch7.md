@@ -59,20 +59,91 @@ public class FieldMouse implements Climb, CanBurrow {
 // en este caso, FieldMouse implementa el método getSpeed de la interfaz Climb, devolviendo un Float, 
 // cuando el método original devuelve un Number.
 ```
-An interface cannot be marked as final
-```java
-//does not compile
-public final interface Walk {}
-```
-Interface variables are implicitly **public, static, final.**
-```java
-public interface Weight {
-  int max_weight = 5;
-  public static final int max_height = 50;  
-  String color;  //does not compile as it's not initialized
-}  
+* Una interfaz puede ser extendida por otra utilizando la palabra reservada `extends`
+* Una interfaz puede extenderse utilizando otras interfaces, separándolas con una `,` coma.
 
+```java
+public interface Nocturnal {
+    public int hunt();
+}
+public interface CanFly{
+    public void flap();
+}
+
+public interface HasBigEyes extends Nocturnal, CanFly {}
+
+public class Owl implements HasBigEyes {
+    public int hunt() {return 5;}
+    public void flap() {System.out.println("Flap!");}
+}
 ```
+
+```java
+public interface HasTail{
+    public int getTailLength();
+}
+
+public interface HasWhiskers {
+    public int getNumberOfWhiskers();
+}
+
+public abstract class HarborSeal extends HasTail, HasWhiskers {
+    // No necesita implementar los métodos aqui ya que es una clase abstracta
+}
+
+// No compila porque CommonSeal no implementa los métodos de la clase abstracta HarborSeal
+public class CommonSeal extends HarborSeal {} 
+}
+```
+* Una clase puede implementar una interfaz, pero una clase no puede extender una interfaz
+* Una interfaz puede extender otra interfaz, pero una interfaz no puede implementar otra interfaz
+
+```java
+public interface CanRun {}
+public class Cheetah extends CanRun{} // No compila porque la clase Cheetah no puede extender una interfaz
+
+public class Hyena {}
+public interface HasFur extends Hyena {} // No compila porque la interfaz HasFur no puede extender una clase
+```
+
+Java acepta la herencia de dos métodos abstractos que tienen declaraciones de métodos compatibles 
+(métodos que se pueden anular por uno solo, ya que se puede usar un tipo de retorno covariante)
+
+```java
+public interface Herbivore {
+    public void eatPlants();
+}
+
+public interface Omnivore {
+    public void eatPlants();
+}
+
+public class  Bear implements Herbivore, Omnivore {
+    public void eatPlants() {
+        System.out.println("Eating plants");
+    }
+}
+
+public interface CanBark {
+    public void makeSound();
+}
+
+public interface CanHowl {
+    public integer makeSound();
+}
+
+// no compila porque existe forma de implementar ambos métodos con el mismo nombre y tipo de retorno
+public class Wolf implements CanBark, CanHowl {}
+```
+
+Una interfaz puede tener modificadores implícitos los cuales son: 
+
+* `abstract` es por defecto en las interfaces
+* `public`, `static`, `final` son por defecto en las variables de una interfaz
+* Los métodos de las interfaces con un cuerpo vació son `abstract` por defecto
+* Los métodos de una interfaz sin el modificador `private` son implícitamente `public`
+
+  _La última regla aplica a los métodos de interfaz abstractos, predeterminados y estáticos_
 
 ### Interfaces with the same default name
 Class which implements two interfaces having the same(signature) default method:
