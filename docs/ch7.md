@@ -142,57 +142,67 @@ Una interfaz puede tener modificadores implícitos los cuales son:
 * `public`, `static`, `final` son por defecto en las variables de una interfaz
 * Los métodos de las interfaces con un cuerpo vació son `abstract` por defecto
 * Los métodos de una interfaz sin el modificador `private` son implícitamente `public`
+  * Esto aplica a los métodos abstractos, estáticos y por defecto
 
-  _La última regla aplica a los métodos de interfaz abstractos, predeterminados y estáticos_
-
-### Interfaces with the same default name
-Class which implements two interfaces having the same(signature) default method:
-```java
-@Override
-public void go() {
-    Run.super.go();
-    //or
-    Walk.super.go();
-}
-```
-[Full Example](../src/main/java/org/diegodamian/ocp17/book/ch7/interfaces/defaultmethods/InheritTwoDefaultMethods.java)
-#### Case abstract class
-[Abstract class default methods](../src/main/java/org/diegodamian/ocp17/book/ch7/interfaces/defaultmethods/AbstractClassDefaultMethods.java)
-
-#### default conflict abstract method
-```java
-interface House {
-  default void work(){}  //default method
-}
-
-interface Office {
-  void work(); //abstract method
-}
-
-class HomeOffice implements Office, House {
-  //I am forced to implement work()!
-  @Override
-  public void work() {}
-}
-```
-[default vs abstract conflict](../src/main/java/org/diegodamian/ocp17/book/ch7/interfaces/defaultmethods/DefaultVsAbstractConflict.java)
-### private methods
-A private interface method **cannot** be called in a method outside the interface declaration.
+En el siguiente fragmento de código, se muestra cómo el compilador agrega los modificadores implícitos a la interfaz:
 
 ```java
-interface InterfaceWithAPrivateMethod {
-  private void message();
-  void hello();
+public interface Soar {
+    int MAX_HEIGHT = 1000; 
+    static final boolean UNDERWATER = true; 
+    void fly(int speed); 
+    abstract void takeOff(); 
+    public abstract double dive();
 }
 
-class InterfaceWithAPrivateMethodImpl implements InterfaceWithAPrivateMethod {
-  @Override
-  public void hello(){
-    //does not compile!
-    //message();
-  }
+public abstract interface Soar {
+    public static final int MAX_HEIGHT = 1000;
+    public static final boolean UNDERWATER = true;
+    public abstract void fly(int speed);
+    public abstract void takeOff();
+    public abstract double dive();
 }
 ```
+
+Si intentamos marcar un método o variable con un modificador que entraría en conflicto con el modificador implícito, la compilación fallará.
+
+```java
+public interface Dance {
+    private count =4; // No compila porque private no es un modificador válido para una variable de interfaz
+    protected void step(); // No compila porque protected no es un modificador válido para un método de interfaz
+}
+```
+
+**Diferencias entre interfaces y clases abstractas**
+
+* Solo las interfaces utilizan modificadores implícitos (aunque ambos son de tipo abstracto)
+
+```java
+abstract class Husky {
+    abstract void play();
+}
+
+interface Poodle {
+    void play();
+}
+
+// Ambas definiciones de métodos se consideran abstractas pero la clase Husky no se compilara si el método play() 
+// no está marcado como abstract, mientras que el método en la interfaz Poodle se compilará con o sin el modificador abstract.
+
+public class Webby extends Husky {
+    void play() {}
+}
+
+public class Georgette implements Poodle {
+    void play() {} 
+}
+
+// el métotdo play() de Webby al ser de tipo paquete, compilara ya que es producto de una herencia mientras que 
+// el método play() de Georgette no compilará ya que es producto de una implementación de una interfaz y debe ser público.
+```
+
+
+
 
 ### Override
 `@Override` annotation informs the compiler that the element is meant to override an element declared
