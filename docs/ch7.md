@@ -267,7 +267,7 @@ public interface Carnivore {
     }
 }
 
-// la clase no compilara porque por regla debe implementar el método getSpeed()
+// la clase Cat no compilara porque por regla debe implementar el método getSpeed() mientras que Dog si.
 public interface Walk {
     public default int getSpeed() {
         return 5;
@@ -281,6 +281,12 @@ public interface Run {
 }
 
 public class Cat implements Walk, Run {}
+
+public class Dog implements Walk, Run {
+    public int getSpeed() {
+        return 1;
+    }
+}
 
 ```
 
