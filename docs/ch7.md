@@ -249,14 +249,40 @@ public class Snake implements IsColdBlooded {
   // No es necesario implementar getAltitude() porque ya tiene una implementación por defecto
 }
 ```
-Reglas para los métodos por defecto:
+**Reglas para los métodos por defecto:**
 
-- Un método por defecto solo puede ser declarado dentro de una interfaz.
-- Un método por defecto debe ser etiquetado con la palabra clave `default` y tener un cuerpo.
-- Un método por defecto es implícitamente `public`.
-- Un método por defecto puede ser sobrescrito por una clase que implementa la interfaz, pero no es obligatorio hacerlo.
+* Un método por defecto solo puede ser declarado dentro de una interfaz.
+* Un método por defecto debe ser etiquetado con la palabra clave `default` y tener un cuerpo.
+* Un método por defecto es implícitamente `public`.
+* Un método por defecto no puede ser marcado como `abstract`, `static` o `private`.
+* Un método por defecto puede ser sobrescrito por una clase que implementa la interfaz, pero no es obligatorio hacerlo.
+* Si una clase hereda dos o más métodos por defecto con la misma firma, la clase debe sobrescribir el método.
 
+```java
+// esto no compila porque combina el comportamiento de un metodo por defecto y un metodo concreto. 
+public interface Carnivore {
+    public default void eatMeat();
+    public int getRequiredFoodAmount(){
+        return 13;
+    }
+}
 
+// la clase no compilara porque por regla debe implementar el método getSpeed()
+public interface Walk {
+    public default int getSpeed() {
+        return 5;
+    }
+}
+
+public interface Run {
+    public default  int getSpeed() {
+        return 10;
+    }
+}
+
+public class Cat implements Walk, Run {}
+
+```
 
 ### Override
 `@Override` annotation informs the compiler that the element is meant to override an element declared
