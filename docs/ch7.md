@@ -201,6 +201,60 @@ public class Georgette implements Poodle {
 // el método play() de Georgette no compilará ya que es producto de una implementación de una interfaz y debe ser público.
 ```
 
+### Métodos concretos en las interfaces
+
+Las interfaces contemplas más elementos que solo métodos abstractos y constantes, los cuales se listan a continuación:
+
+|                       | Tipo de Miembro | Modificador requerido | Modificador implícito | Tiene cuerpo o valor |
+|-----------------------|-----------------|-----------------------|-----------------------|----------------------|
+| Constant variable     | Class           | —                     | public, static, final | Yes                  |
+| abstract method       | Instance        | —                     | public, abstract      | No                   |
+| default method        | Instance        | default               | public                | Yes                  |
+| static method         | Class           | static                | public                | Yes                  |
+| private method        | Instance        | private               | —                     | Yes                  |
+| private static method | Class           | private, static       | —                     | Yes                  |
+
+_**¿Qué pasa con los miembros de tipo paquete o protegido para una interfaz?**_
+
+* El modificador protected existe para permitir acceso a subclases (herencia). Como las interfaces no se extienden, sino que se implementan, el concepto de protected no tiene sentido en este contexto.
+* Las interfaces no soportan package access (el nivel de acceso sin modificador), porque todos los métodos sin modificador en interfaces son implícitamente public, cambiar esto rompería programas.
+
+#### Método por defecto de una interfaz
+
+Un método por defecto usando la palabra clave `default` permite a las interfaces proporcionar una implementación predeterminada para los métodos, y esta ser modificada por la clase que lo implementa si en verdad requiere utilizarla.
+Esto ayuda a tener que modificar implementaciones de interfaces sin romper el código existente.
+
+```java
+public interface IsColdBlooded {
+  boolean hasScales();
+
+  default double getTemperature() {
+    return 10.0;
+  }
+
+  default double getAltitude() {
+    return 1000.0;
+  }
+}
+
+public class Snake implements IsColdBlooded {
+
+  public boolean hasScales() {
+    return true;
+  }
+  
+  public double getTemperature() {
+    return 20.0;
+  }
+  // No es necesario implementar getAltitude() porque ya tiene una implementación por defecto
+}
+```
+Reglas para los métodos por defecto:
+
+- Un método por defecto solo puede ser declarado dentro de una interfaz.
+- Un método por defecto debe ser etiquetado con la palabra clave `default` y tener un cuerpo.
+- Un método por defecto es implícitamente `public`.
+- Un método por defecto puede ser sobrescrito por una clase que implementa la interfaz, pero no es obligatorio hacerlo.
 
 
 
