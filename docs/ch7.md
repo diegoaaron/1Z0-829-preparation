@@ -249,6 +249,7 @@ public class Snake implements IsColdBlooded {
   // No es necesario implementar getAltitude() porque ya tiene una implementación por defecto
 }
 ```
+
 **Reglas para los métodos por defecto:**
 
 * Un método por defecto solo puede ser declarado dentro de una interfaz.
@@ -286,9 +287,48 @@ public class Dog implements Walk, Run {
     public int getSpeed() {
         return 1;
     }
+    
+    // Si queremos acceder al método por defecto de una interfaz que se sobreescribe, debemos usar la siguiente sintaxis:
+    public int getWalkSpeed() {
+        return Walk.super.getSpeed();
+    }
+}
+```
+
+#### Método estático de una interfaz
+
+Estos métodos se definen con la palabra clave static y casi siempre se comportan igual que los métodos estáticos definidos en las clases.
+
+**Reglas para los métodos estáticos:**
+
+* Un método estático debe ser marcado con la palabra `static` y debe tener un cuerpo
+* Un método estático sin un modificador de acceso es implícitamente `public` (se puede usar un modificador de acceso `private`)
+* Un método estático no puede ser marcado como `abstract` o `final`
+* Un método estático no se puede heredar y no se puede acceder a él en una clase que implementa la interfaz sin una referencia al nombre de la interfaz
+
+```java
+public interface Hop {
+    static int getJumpHeight() {
+        return 8;
+    }
+}
+
+public class Skip {
+    public int skip(){
+        return Hop.getJumpHeight(); 
+    }
+}
+
+public class Bunny implements Hop {
+    public void printDetails() {
+        // No se puede acceder al método estático de la interfaz Hop desde una instancia de Bunny
+        // System.out.println(getJumpHeight()); // Esto no compila
+        System.out.println(Hop.getJumpHeight()); // Debe ser llamado con el nombre de la interfaz
+    }
 }
 
 ```
+
 
 ### Override
 `@Override` annotation informs the compiler that the element is meant to override an element declared
