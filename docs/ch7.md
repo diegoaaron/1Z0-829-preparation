@@ -326,9 +326,30 @@ public class Bunny implements Hop {
         System.out.println(Hop.getJumpHeight()); // Debe ser llamado con el nombre de la interfaz
     }
 }
+```
+#### Método privado de una interfaz
 
+Los métodos privados y los métodos de interfaz estáticos privados solo se pueden usar dentro de la interfaz donde se declararon y su uso es principalmente para reducir la duplicación de código.
+
+```java
+public interface Schedule {
+    default void wakeUp() {checkTime(7);}
+    private void haveBreakfast() {checkTime(7);}
+    static void workOut() {checkTime(18);}
+    private static void checkTime(int hour) {
+        if (hour > 17) {
+            System.out.println("Estas llegando tarde al trabajo!");
+        } else {
+            System.out.println("Tienes tiempo para un café.");
+        }
+    }
+}
+// Podrías escribir esta interfaz sin usar un método privado copiando el contenido del método checkTime() donde lo requieras, 
+//  pero de esta forma será más fácil de leer, ya que no se está repitiendo en más lugares. También se podría definir como checkTime() público 
+//  pero eso expondría a todos este método entrando en conflicto con el principio de encapsulación.
 ```
 
+La diferencia entre un método privado no estático y uno estático es que el primero se puede llamar desde métodos default u otros privados no estáticos de la interfaz. Mientras que el privado estático puede ser llamado desde métodos static, default y cualquier otro privado.
 
 ### Override
 `@Override` annotation informs the compiler that the element is meant to override an element declared
