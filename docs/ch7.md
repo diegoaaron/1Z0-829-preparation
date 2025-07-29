@@ -351,6 +351,33 @@ public interface Schedule {
 
 La diferencia entre un método privado no estático y uno estático es que el primero se puede llamar desde métodos default u otros privados no estáticos de la interfaz. Mientras que el privado estático puede ser llamado desde métodos static, default y cualquier otro privado.
 
+**Reglas para los métodos privados:**
+
+* Un método de interfaz privado debe estar marcado como `private` e incluir un cuerpo de método.
+* Un método de interfaz estático privado puede ser llamado por cualquier método dentro de la definición de la interfaz.
+* Un método de interfaz privado solo puede ser llamado por un método por defecto otros métodos privados no estáticos dentro ode la interfaz.
+
+_Para ambos tipos de métodos privados, una clase que implementa la interfaz no puede invocarlos directamente_
+
+**Llamar a métodos abstractos** 
+
+Los métodos `default` y `private` no-estáticos pueden llamar a métodos abstractos de la misma interfaz. Esto es posible porque estos métodos se ejecutan en el contexto de una instancia concreta de una clase que implementa la interfaz. Cuando se invoca un método default, ya existe un objeto real que tiene implementaciones concretas de todos los métodos abstractos.
+
+```java
+public interface ZooRenovation {
+    public String projectName();
+    abstract String status();
+    
+    default void printStatus() {
+        System.out.println("Project: " + projectName() + ", Status: " + status());
+    }
+}
+
+// En este ejemplo, tanto projectName() como status() tiene los mismos modificadores 
+// y se pueden llamar mediante el método predeterminado printStatus()
+```
+
+
 ### Override
 `@Override` annotation informs the compiler that the element is meant to override an element declared
 in a superclass and/or interface. While **it is not required** to use this annotation when overriding a method, it helps
