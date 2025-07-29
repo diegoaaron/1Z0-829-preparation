@@ -378,43 +378,8 @@ public interface ZooRenovation {
 ```
 
 
-### Override
-`@Override` annotation informs the compiler that the element is meant to override an element declared
-in a superclass and/or interface. While **it is not required** to use this annotation when overriding a method, it helps
-to prevent errors.
 
-### Default Methods
-First, if a class or interface inherits two interfaces containing default methods with the same
-signature, it must override the method with its own implementation.
-
-[Inherit two default methods with the same signature](../src/main/java/org/diegodamian/ocp17/book/ch7/interfaces/defaultmethods/InheritTwoDefaultMethods.java)
-
-#### Methods accessible by default method
-A default method can invoke any other type of method within the interface:
-- public static methods
-- private static methods
-- public instance methods
-- private static methods
-- other default methods
-
-[DefaultMethodCallingOtherMethods](../src/main/java/org/diegodamian/ocp17/book/ch7/interfaces/defaultmethods/DefaultMethodCallingOtherMethods.java)
-### static methods
-
-```java
-interface Certifications {
-  //public by default
-  public static void ocp17() {}
-}
-
-class MyCertifications implements Certifications {
-  public static void main(String[] args) {
-    Certifications.ocp17();  //valid
-    MyCertifications myCertifications = new MyCertifications();
-    //I cannot invoke a static method of the interface from an instance of the class which implements the interface!
-    myCertifications.ocp17();  //DOES NOT COMPILE!
-  }
-}
-```
+## -----------------------
 
 [interface with static methods](../src/main/java/org/diegodamian/ocp17/book/ch7/interfaces/InterfaceWithStaticMethods.java)
 ## Sealed
