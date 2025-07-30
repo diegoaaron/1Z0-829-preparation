@@ -16,7 +16,7 @@ Toma un capitulo del libro mencionado y revisa los apuntes, diagramas y código 
 4. [Core APIs](docs/ch4.md)
 5. [Methods](docs/ch5.md)
 6. [Class Design](docs/ch6.md)
-7. [Beyond Classes](docs/ch7.md)
+7. [Beyond Classes](docs/ch07_01_interfaces.md)
 8. [Lambdas and Functional Interfaces](docs/ch8.md)
 9. [Collections and Generics](docs/ch9.md)
 10. [Streams](docs/ch10.md)
