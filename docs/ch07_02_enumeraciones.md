@@ -132,6 +132,9 @@ Season.SUMMER.printExpectedVisitors(); // Imprime: High
 También es posible definir diferentes métodos para cada enumeración
 
 ```java
+// Que paso, parece una clase abstracta y un montón de subclases. La enumeración tiene definido un método abstracto. 
+// Esto significa que cada valor de enumeración debe implementar este método sino se tiene un error de compilación.
+
 public enum Season {
     WINTER {
         public String getHours() {
@@ -156,6 +159,41 @@ public enum Season {
     public abstract String getHours(); // Método abstracto que cada enumeración debe implementar
 }
 
-// Que paso, parece una clase abstracta y un montón de subclases. La enumeración tiene definido un método abstracto. 
-// Esto significa que cada valor de enumeración debe implementar este método sino se tiene un error de compilación.
+// Que pasa si queremos que todos y cada uno de los valores de la enumeración tengan un método, 
+// podemos crear el método para el que se quieran. Solo codificamos los casos especiales y dejamos que los demás 
+// usen la implementación proporcionada por la enumeración. 
+
+public enum Season {
+    WINTER {
+        public String getHours() {
+            return "9am - 5pm";
+        }
+    },
+    SUMMER {
+        public String getHours() {
+            return "8am - 6pm";
+        }
+    },
+    SPRING, FALL {
+        public String getHours() {
+            return "10am - 8pm";
+        }
+    }
+}
+
+// Una enumeración puede incluso implementar una interfaz, ya que esto solo requiere sobrecargar métodos abstractos.
+
+public interface Weather { int getAverageTemperature(); }
+public enum Season implements Weather {
+    WINTER, SPRING, SUMMER, FALL;
+    public int getAverageTemperature() {
+        return 30;
+    }
+}
+
+// El hecho de que una enumeración pueda tener muchos métodos nos signifiica que deba tenerlos. 
+// Intenta que tus enumeraciones sean simples.
 ```
+
+_La lista de valores de enumeración siempre van la inicio._
+
