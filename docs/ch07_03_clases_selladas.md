@@ -31,3 +31,27 @@ _Las clases selladas son declaradas comúnmente con el modificador `abastract` a
 
 #### Compilación de clases selladas
 
+Si intentamos compilar la siguiente clase sellada sin ningún código:
+
+```java
+// Penguin.java
+package zoo;
+public sealed class Penguin permits Emperor {}
+
+// No compilará ya que una clase sellada debe declararse y compilarse en el mismo paquete que sus sub-clases directas
+```
+
+Si intentamos compilar la sub-clase declarada y la clase sellada en el mismo paquete:
+
+```java
+// Penguin.java
+package zoo;
+public sealed class Penguin permits Emperor {}
+
+// Emperor.java
+package zoo;
+public final class Emperor {}
+
+// No compilara porque Emperor no extiende Penguin
+```
+
