@@ -83,5 +83,45 @@ public sealed class Mammal permits Equine {}
 public sealed class Equine extends Mammal permits Zebra {}
 
 public final class Zebra extends  Equine {}
+
+// El compilador permitira que Mammal acepte objetos de tipo Zebra a pesar de que no este en el permits de Mammal
+```
+
+**Una sub-clase `non-sealed`**
+
+Esto permite que una clase esté abierta a cualquier clase y sub-clases
+
+```java
+public sealed class Wolf permits Timber {}
+
+public non-sealed class Timber extends Wolf {}
+
+public class MyWolf extends Timber {}
+
+public class MyFurryWolf extends MyWolf {}
+
+// Para este ejemplo, MyFurryWolf se considera una sub-clase de Wolf gracias al polimorfismo (una instancia de una subclase puede ser tratada como una instancia de su superclase) ya que no-sealed permite que Timber sea extendida sin restricciones.
+```
+
+**Omitiendo la palabra clave `permits`**
+
+Hasta ahora todos los ejemplos que has visto han requerido una cláusula permits al declarar una clase sellada, pero no siempre será necesario
+
+```java
+// Snake.java
+public sealed class Snake {}
+
+final class Cobra extends Snake {} // no se necesita porque estan en el mismo archivo
+
+// Snake.java
+public sealed class Snake {
+    final class Cobra extends Snake {} // no se necesita porque es una clase anidada 
+}
+
+// Si de forma explicitamo en una clase sellada con sus sub-clases anidadas usamos permits, deberemos referenciar el espacio de nombres de la clase principal
+
+public sealed class Snake permits Snake.Cobra {
+    final class Cobra extends Snake {} 
+}
 ```
 
