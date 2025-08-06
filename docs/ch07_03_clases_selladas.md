@@ -55,3 +55,33 @@ public final class Emperor {}
 // No compilara porque Emperor no extiende Penguin
 ```
 
+#### Especificaciones para el modificador de las sub-clases
+
+Mientras que en las interfaces se puede tener un cierto número de modificadores implícitos, en las clases selladas cada subclase debe tener uno de los siguientes modificadores: final, non-sealed o abstract. 
+
+**Una sub-clase `final`**
+
+Este modificador se puede aplicar directamente a una sub-clase sellada
+
+Al igual que una clase regular, el modificador `final` impide que la subclase Gazelle se extienda más
+
+```java
+public sealed class Antelope permits Gazelle {}
+
+public final class Gazelle extends Antelope {} 
+
+public class George extends Gazelle {} // no compila no se puede extender una clase final
+```
+
+**Una sub-clase `sealed`**
+
+Al utilizar `sealed` en una sub-clase debemos seguir las reglas de sellado inicial que consiste en definir su propia lista de sub-clases permitidas.
+
+```java
+public sealed class Mammal permits Equine {}
+
+public sealed class Equine extends Mammal permits Zebra {}
+
+public final class Zebra extends  Equine {}
+```
+
