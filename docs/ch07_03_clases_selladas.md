@@ -153,4 +153,11 @@ public non-sealed interface Floats extends Swims {}
 
 Hay que tener en cuenta que las interfaces son implícitamente abstractas y no se pueden marcar como finales por lo cual las interfaces que extienden una interfaz sellada solo pueden ser selladas o no selladas.
 
-**Omitiendo la palabra clave `permits`**
+**Revisando las reglas de las clases selladas**
+
+* Las clases selladas se declaran con los modificadores `sealed` y `permits`. 
+* Las clases selladas deben declararse en el mismo paquete o módulo que sus subclases directas. 
+* Las subclases directas de las clases selladas se deben marcarse como `sealed`, `no-sealed` o `final`.  
+* La cláusula `permits` es opcional si la clase sellada y sus subclases directas se declaran dentro del mismo archivo o si las subclases están anidadas dentro de la clase sellada. 
+* Las interfaces se pueden sellar para limitar las clases que las implementan o las interfaces que las extienden. 
+
