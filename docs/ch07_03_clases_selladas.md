@@ -105,7 +105,7 @@ public class MyFurryWolf extends MyWolf {}
 
 **Omitiendo la palabra clave `permits`**
 
-Hasta ahora todos los ejemplos que has visto han requerido una cláusula permits al declarar una clase sellada, pero no siempre será necesario
+Hasta ahora todos los ejemplos que has visto han requerido una cláusula `permits` al declarar una clase sellada, pero no siempre será necesario
 
 ```java
 // Snake.java
@@ -118,10 +118,39 @@ public sealed class Snake {
     final class Cobra extends Snake {} // no se necesita porque es una clase anidada 
 }
 
-// Si de forma explicitamo en una clase sellada con sus sub-clases anidadas usamos permits, deberemos referenciar el espacio de nombres de la clase principal
+// Si de forma explicita en una clase sellada como en sus sub-clases anidadas usamos permits, deberemos referenciar al espacio de nombres de la clase principal
 
 public sealed class Snake permits Snake.Cobra {
     final class Cobra extends Snake {} 
 }
 ```
 
+Cubriremos las clases anidadas en breve. Por ahora, solo necesitamos saber que una clase anidada es una clase definida dentro de otra clase y que la regla de omisión también se aplican a estas.
+
+| Ubicación de las sub-clases directas     | palabra `permits`            |
+|------------------------------------------|------------------------------|
+| Archivo diferente al de la clase sellada | Requerido                    |
+| En el mismo archivo que la clase sellada | Permitido, pero no requerido |
+| Anidado dentro de la clase sellada       | Permitido, pero no requerido |
+
+#### Sellado de interfaces
+
+Además de las clases, las interfaces también se pueden sellar. La idea es análoga a la de las clases, y se aplican muchas de las mismas reglas. Por ejemplo, la interfaz sellada debe aparecer en el mismo paquete o módulo con nombre que las clases o interfaces que la extienden o implementan directamente.
+
+Una característica distintiva de una interfaz sellada es que la lista de permisos puede aplicarse a una clase que implementa la interfaz o a una interfaz que la extiende. 
+
+```java
+// interfaz sellada
+public sealed interface Swims permits Duck, Swan, Floats {}
+
+// Clases que implementan la interfaz sellada
+public final class Duck implements Swims {}
+public final class Swan implements Swims {}
+
+// Interfaz que extiende la interfaz sellada
+public non-sealed interface Floats extends Swims {}
+```
+
+Hay que tener en cuenta que las interfaces son implícitamente abstractas y no se pueden marcar como finales por lo cual las interfaces que extienden una interfaz sellada solo pueden ser selladas o no selladas.
+
+**Omitiendo la palabra clave `permits`**
