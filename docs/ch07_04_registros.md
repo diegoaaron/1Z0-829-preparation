@@ -37,7 +37,7 @@ public final class Crane {
     private final String name;
 
     public Crane(int numbersEggs, String name) {
-        if (numbersEggs >= 0) this.setNumbersEggs(numbersEggs);
+        if (numbersEggs >= 0) this.numbersEggs = numbersEggs;
         else throw new IllegalArgumentException();
         this.name = name;
     }
@@ -46,11 +46,23 @@ public final class Crane {
         return numbersEggs;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 }
 
+// Esto nos asegura tener una clase inmutable (gracias a la definición final en la clase y variables, la ausencia de 
+// setter y tipos de datos int y string) y encapsulada (gracias a la definición private que no deja un acceso directo 
+// a las vairables desde afuera, final para que no sean reasiganda  una valor despues de inicializarlo, 
+// metodos getter que dan un acceso controlado a las variables, final en la clase que protege la implementación de herencia) 
+
+
+// En el siguiente ejemplo, podemos ver como siempre que hagamos privadas las variables de instancia la clase se encapsulara bien
+
+public class Vet {
+    private String name = "Dr. Smith";
+    private int yearsOfExperience = 10;
+}
 
 ```
 
