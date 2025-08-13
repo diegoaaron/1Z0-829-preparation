@@ -4,7 +4,7 @@
 
 Una clase sellada es una clase que restringe qué otras clases pueden extenderla directamente. 
 
-Antes de avanzar debemos entender el concepto de encapsulación, para eso debemos saber que es un **POJO "Plan Old Java Object"** el cual es una clase usada pra modelar y pasar datos sencillos (también es asociado con un JavaBean que es un POJO con reglas adicionales)
+Antes de avanzar debemos entender el concepto de encapsulación, para eso debemos saber que es un **POJO "Plan Old Java Object"** el cual es una clase usada pra modelar y pasar datos sencillos.
 
 ```java
 public class Crane {
@@ -63,8 +63,42 @@ public class Vet {
     private String name = "Dr. Smith";
     private int yearsOfExperience = 10;
 }
-
 ```
 
-#### Palabras clave asociadas
+#### Definiendo un registro
 
+```java
+public record Crane(int numbersEggs, String name) {}
+```
+
+La línea anterior crea un registro con el cual el compilador inserta la implementación de las variables asi como los métodos de objeto equals(), hashCode() y toString().
+
+Ya que por defecto el compilador inyecta un constructor con el mismo orden de los parámetros al crear el registro, si se crea una instancia sin respetar ese orden u omitiendo un valor se genera un error de compilación.
+
+```java
+var mommy = new Crane(4, "Cathy"); // Correcto
+System.out.println(mommy.numbersEggs()); // 4
+System.out.println(mommy.name()); // Cathy
+
+var mommy = new Crane("Luis", 5); // Error
+var mommy = new Crane(5); // Error
+```
+
+Elementos agregados automáticamente por el compilador al definir un registro:
+
+* Constructor: un constructor público con los parámetros en el mismo orden que se definieron en el registro.
+* Métodos de acceso: métodos públicos con el mismo nombre que los componentes del registro (para cada variable).
+* equals(): un método que compara dos instancias del registro para ver si son iguales.
+* hashCode(): un método que devuelve un valor hash para la instancia del registro.
+* toString(): un método que devuelve una representación de cadena de la instancia del registro.
+
+```java
+var father = new Crane(3, "Bob");
+System.out.println(father); // Crane[numbersEggs=3, name=Bob]
+
+var copy = new Crane(3, "Bob");
+System.out.println(copy); // Crane[numbersEggs=3, name=Bob]
+
+System.out.println(father.equals(copy)); // true (porque son records y tienen el mismo contenido inmutable)
+System.out.println(father.hashCode() + "," + copy.hashCode()); // 1007, 1007
+```
