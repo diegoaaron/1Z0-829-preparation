@@ -167,3 +167,18 @@ public record Crane(int numbersEggs, String name) {
 
 **El constructor corto:**
 
+Este tipo es util, ya que permite que los registros procesen la validación y las transformaciones. No requiere que nombremos a los parámetros. 
+
+```java
+public record Crane(int numbersEggs, String name) {
+    public Crane {
+        if(numbersEggs <0) {
+            throw new IllegalArgumentException("Number of eggs cannot be negative");
+        }
+        name = name.toUpperCase();
+    }
+}
+```
+
+Transformando parámetros en el constructor corto:
+
