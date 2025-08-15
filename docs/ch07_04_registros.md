@@ -102,3 +102,68 @@ System.out.println(copy); // Crane[numbersEggs=3, name=Bob]
 System.out.println(father.equals(copy)); // true (porque son records y tienen el mismo contenido inmutable)
 System.out.println(father.hashCode() + "," + copy.hashCode()); // 1007, 1007
 ```
+
+Es permitido crear un registro sin ningún componente, aunque no es muy útil.
+
+```java
+public record Empty() {}
+```
+
+#### Entendiendo la inmutabilidad de los registros
+
+Ya que los registros no tienen setters y no se pueden modificar de ninguna forma después de su creación, la unica opción es crear otro objeto.
+
+```java
+var cusin = new Crane(2, "Anna");
+var friend = new Crane(cousin.numberEggs(), "Anna");
+```
+
+Teniendo como analogía que las interfaces son implícitamente abstractas, los registros son implícitamente finales. El modificador final es opcional.
+
+```java
+public final record Crane(int numbersEggs, String name) {}
+```
+
+También al igual que las enumeraciones eso significa que no puedes extender ni heredar un registro.
+
+```java
+public record BlueCrane() extends Crane {} // No compila
+```
+
+Al igual que las enumeraciones, un registro puede implementar una interfaz regular o sellada siempre que implemente todos los métodos abstractos.
+
+```java
+public interface Bird {}
+public record Crane(int numbersEggs, String name) implements Bird {}
+```
+
+#### Creando constructores 
+
+Podemos definir la creación de un constructor dentro del registro de forma denominado;
+
+**El constructor largo:**
+
+El cual el compilador lo inserta automáticamente, ya que utiliza todos los campos del registro:
+
+```java
+public record Crane(int numbersEggs, String name) {
+    public Crane(int numbersEggs, String name) {
+        if (numbersEggs < 0) {
+            throw new IllegalArgumentException("Number of eggs cannot be negative");
+        }
+        this.numbersEggs = numbersEggs;
+        this.name = name;
+    }
+}
+```
+
+El compilador no insertará un constructor si define uno con la misma lista de parámetros, pero internamente no se incluyen todos los campos del registro.
+
+```java
+public record Crane(int numbersEggs, String name) {
+    public Crane(int numbersEggs, String name) {} // No compila, ya que no se incluyen todos los campos del registro
+}
+```
+
+**El constructor corto:**
+
