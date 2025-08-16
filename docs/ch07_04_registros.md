@@ -180,5 +180,30 @@ public record Crane(int numbersEggs, String name) {
 }
 ```
 
-Transformando parámetros en el constructor corto:
+Si bien los constructores compactos pueden modificar parámetros del constructor, no pueden sobreescribirlos los campos finales (ya que aún no existen al momento de la ejecución del constructor, sino después de completar esta parte).
 
+```java
+public record Crane(int numbersEggs, String name) {
+    public Crane {
+        this.numbersEggs =  10; // No compila
+    }
+}
+
+public record Crane(int numbersEggs, String name) {
+    public Crane {
+        numbersEggs =  10; // Si compila
+    }
+}
+```
+
+**Sobrecarga de constructores**
+
+También podemos crear constructores sobrecargados que tomen una lista de parámetros diferentes, esto se relaciona directamente con los constructores de forma larga.
+
+```java
+public record Crane(int numbersEggs, String name) {
+    public Crane(String firstName, String lastName) {
+        this(0, firstName + " " + lastName); // Llama al constructor largo
+    }
+}
+```
