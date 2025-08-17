@@ -201,9 +201,48 @@ public record Crane(int numbersEggs, String name) {
 También podemos crear constructores sobrecargados que tomen una lista de parámetros diferentes, esto se relaciona directamente con los constructores de forma larga.
 
 ```java
+// La primera línea de un constructor sobrecargado deb ser una llamada explicita a otro constructor a través de this() 
+// si no hay otro se llama al constructor largo.
+
 public record Crane(int numbersEggs, String name) {
     public Crane(String firstName, String lastName) {
         this(0, firstName + " " + lastName); // Llama al constructor largo
     }
 }
+
+// A diferencia de los constructores compactos, solo se puede transformar los datos en la primera línea despues todos los campos ya estaran asignados y el objeto es inmutable. 
+
+public record Crane(int numbersEggs, String name) {
+    public Crane(String firstName, String lastName) {
+        this(0, firstName + " " + lastName); // Llama al constructor largo
+        numbersEggs = 10; // no afecta (aplica al parametro pero no al campo de instancia) 
+        this.numbersEggs = 20; // No compila, ya que no se puede reasignar un campo final
+    }
+}
+
+// Tampoco se pueden declarar dos constructores que se llame infinitamente entre si. 
+
+public record Crane(int numbersEggs, String name) {
+    public Crane(String name) {
+        this(1); // no compila
+    }
+    public Crane(int numbersEggs) {
+        this(""); // no compila
+    }
+}
 ```
+
+#### Personalizando registros
+
+Los registros aceptan muchos de los modificadores que se pueden aplicar a las clases como: 
+
+* Constructores sobrecargados y compactos
+* Métodos de instancia, incluyendo la anulación de cualquier método proporcionado (equals(), hashCode(), toString())
+* Clases anidadas, interfaces, anotaciones, enumeraciones y registros
+
+```java
+// Como ejemplo lo siguiente anula 2 metodos de instancia utilizando la anotación opcional @Override
+
+
+```
+
