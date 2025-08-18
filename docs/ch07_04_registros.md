@@ -243,6 +243,27 @@ Los registros aceptan muchos de los modificadores que se pueden aplicar a las cl
 ```java
 // Como ejemplo lo siguiente anula 2 metodos de instancia utilizando la anotación opcional @Override
 
+public record Crane(int numbersEggs, String name) {
+    @Override
+    public String numbersEggs() {
+        return 10;
+    }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+}
 ```
 
+Si bien puedo agregar métodos, campos estáticos y otros tipos de datos, no se puede agregar campos de instancia fuera de la declaración de registro incluso si son privados, ya que esto anulan el propósito de crear un registro y podría romper la inmutabilidad que lo caracteriza.
+
+```java
+// Como ejemplo lo siguiente anula 2 metodos de instancia utilizando la anotación opcional @Override
+
+public record Crane(int numbersEggs, String name) {
+    private static int type = 10;
+    public int size; // No compila, ya que no se pueden agregar campos de instancia fuera de la declaración del registro
+    private boolean friendly; // No compila, ya que no se pueden agregar campos de instancia fuera de la declaración del registro
+}
+```
