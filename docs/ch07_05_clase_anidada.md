@@ -4,14 +4,14 @@
 
 Una clase anidada es una clase que se define dentro de otra clase y puede ser de cuatro tipos.
 
-* Clase interna: Un tipo no estático definido en el nivel de miembro de una clase
+* Clase anidada interna: Un tipo no estático definido en el nivel de miembro de una clase
 * Clase anidada estática: Un tipo estático definido en el nivel de miembro de una clase
 * Clase local: Una clase definida dentro del cuerpo de un método
 * Clase anónima: Un caso especial de una clase local que no tiene nombre.
 
 Entre sus beneficios está la capacidad de definir clases auxiliares y restringir su acceso, mejora la encapsulación, limpieza y legibilidad de código.
 
-#### Definiendo una clase interna
+#### Definiendo una clase anidada interna
 
 Una clase interna "inner class" o clase interna miembro "member inner class" es un tipo no estático definido en el nivel de miembro de una clase (el mismo nivel que los métodos, las variables de instancia y los constructores). Debido a que no son tipos de nivel superior, pueden usar cualquiera de los cuatro niveles de acceso.
 
@@ -142,4 +142,7 @@ public class Squirrel {
     }
 }
 ```
+
+#### Definiendo una clase anidada estática
+
 
