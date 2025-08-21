@@ -145,4 +145,62 @@ public class Squirrel {
 
 #### Definiendo una clase anidada estática
 
+Una clase anidada estática es un tipo estático definido a nivel de miembro. A diferencia de una clase interna, una clase anidada estática se puede instanciar sin una instancia de la clase envolvente. Sin embargo, la desventaja es que no puede acceder a las variables de instancia o método declarados en la clase externa.
+
+O ea es una clase de nivel superior excepto por:
+* La anidación crea un espacio de nombres porque el nombre de la clase envolvente debe usarse para referirse a él.
+* Se puede marcar como privado o protegido.
+* La clase envolvente puede hacer referencia a los campos y métodos de la clase anidada estática.
+
+
+```java
+// La línea 165 instancia la clase anidada. Dado que la clase es estática, no necesita una instancia de Park para usarla. 
+// Puede acceder a variables de instancia privadas, como se ve en la linea 166.
+
+public class Park {
+    static class Ride {
+        private int price = 6;
+    }
+    public static void main(String[] args) {
+        var ride = new Ride();
+        System.out.println(ride.price); // 6
+    }
+}
+```
+
+#### Definiendo una clase local 
+
+Una clase local es una clase anidada definida dentro de un método. Al igual que las variables locales, una declaración de clase local no existe hasta que se invoca el método y queda fuera del ámbito cuando el método regresa. Esto significa que puede crear instancias solo desde dentro del método. Esas instancias aún pueden devolverse desde el método.
+
+* No tienen un modificador de acceso
+* Pueden declararse finales o abstractas
+* Tienen acceso a todos los campos y métodos de la clase envolvente (cuando se definen en un método de instancia)
+* Pueden acceder a las variables locales finales y efectivamente finales
+
+```java
+// La clase local tiene un ámbito que termina en la línea 198. La línea 192 se refiere a una variable de instancia 
+// y una variable local final, por lo que se permiten ambas referencias a variables desde dentro de la clase local.
+
+public class PrintNumbers {
+    private int length = 5;
+    
+    public void calculate() {
+        final int width = 20;
+        
+        class Calculator {
+            public void multiply() {
+                System.out.println(length * width);
+            }
+        }
+
+        var calculator = new Calculator();
+        calculator.multiply();
+    }
+    
+    public static void main(String[] args) {
+        var printer = new PrintNumbers();
+        printer.calculate(); // 100
+    }
+}
+```
 
