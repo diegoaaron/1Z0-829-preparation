@@ -202,5 +202,28 @@ public class PrintNumbers {
         printer.calculate(); // 100
     }
 }
+
+// Las variables length y height son finales y efectivamente finales (porque nunca se modifican en toda la ejecución), 
+// respectivamente, por lo que ninguna causa un problema de compilación. Por otro lado, la variable width se reasigna 
+// durante el método, por lo que no puede ser efectivamente final. Por esto la declaración de la clase no compila.
+
+public void processData() {
+    final int length = 5;
+    int width = 10;
+    int height = 2;
+    
+    class VolumeCalculator {
+        public int multiply() {
+            return length * width * height; // No compila
+        }
+    }
+    width = 2;
+}
 ```
+
+#### Definiendo una clase anónima  
+
+Una clase anónima es una forma especializada de una clase local que no tiene nombre. Se declara e instancia en una sola sentencia utilizando la palabra clave `new`, un nombre de tipo entre paréntesis y un conjunto de llaves. 
+
+Las clases anónimas deben extender una clase existente o implementar una interfaz existente. Son útiles cuando se tiene una implementación corta que no se utilizará en ningún otro lugar.
 
