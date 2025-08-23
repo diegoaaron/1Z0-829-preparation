@@ -227,3 +227,45 @@ Una clase anónima es una forma especializada de una clase local que no tiene no
 
 Las clases anónimas deben extender una clase existente o implementar una interfaz existente. Son útiles cuando se tiene una implementación corta que no se utilizará en ningún otro lugar.
 
+```java
+// Las líneas 238 a 240 definen una clase abstracta. Las líneas 243 a 247 definen la clase anónima. Observe como esta clase anónima no tiene nombre. 
+// El código indica que se debe instanciar un nuevo objeto SaleTodayOnly. Pero SaleTodayOnly es abstracto, esto está bien porque proporcionamos 
+// el cuerpo de la clase ahi mismo, de forma anónima. 
+// Aqui escribir una clase anónima es equivalente a escribir una clase local con un nombre no especificado que extiende SaleTodayOnly y la usa inmediatamente.
+// En la línea 247 usamos punto y coma porque estamos declarando una variable local en estas líneas por lo cual se debe cumplir esa regla.
+
+public class ZooGiftShop {
+    abstract class SaleToday {
+        abstract int dollarsOff();
+    }
+    
+    public int admission(int basePrice) {
+        SaleTodayOnly sale = new SaleTodayOnly() {
+            int dollarsOff() {
+                return 3;
+            }
+        }; // debe acabar en punto y coma
+        return basePrice - sale.dollarsOff();
+    }
+}
+
+// Ahora convertimos este ejemplo para implementar una interfaz en lugar de extender una clase abstracta
+
+public class ZooGiftShop {
+    interface SaleTodayOnly {
+        int dollarsOff();
+    }
+    
+    public int admission(int basePrice) {
+        SaleTodayOnly sale = new SaleTodayOnly() {
+            public int dollarsOff() {
+                return 3;
+            }
+        }; // debe acabar en punto y coma
+        return basePrice - sale.dollarsOff();
+    }
+}
+
+
+```
+
