@@ -250,6 +250,9 @@ public class ZooGiftShop {
 }
 
 // Ahora convertimos este ejemplo para implementar una interfaz en lugar de extender una clase abstracta
+// Lo más interesante aquí es lo poco que ha cambiado. La línea 258 a 260 declaran la interfaz. La línea 264 es pública en 
+// lugar de usar el acceso predeterminado, ya que las interfaces requieren métodos públicos.
+//  ¡La clase anónima es la misma tanto si implementas una interfaz como si extiendes una clase! En la línea 263 se crea una instancia de una clase no de una interfaz. 
 
 public class ZooGiftShop {
     interface SaleTodayOnly {
@@ -269,3 +272,5 @@ public class ZooGiftShop {
 
 ```
 
+
+que pasa si queremos implementar una interfaz y extender una clase, no se puede hacer con una clase anónima a menos que la clase a extender ea java.lang.Object
