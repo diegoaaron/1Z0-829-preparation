@@ -272,5 +272,17 @@ public class ZooGiftShop {
 
 ```
 
+¿Qué pasa si queremos implementar una interfaz y extender una clase? No se puede hacer con una clase anónima a menos que la clase a extender sea `java.lang.Object`
 
-que pasa si queremos implementar una interfaz y extender una clase, no se puede hacer con una clase anónima a menos que la clase a extender ea java.lang.Object
+Recuerda que una clase anónima es simplemente una clase local sin nombre.
+
+Puedes escribir una clase local y darle un nombre si tienes este problema. Luego, puedes implementar tantas interfaces como quieras y extender esta clase.
+
+```java
+// aunque parece que estamos "instanciando una interfaz", en realidad estamos creando una clase anónima que implementa esa interfaz (indicado por las llaves {} después del nombre de la interfaz)
+
+public class Gorilla {
+    interface Climb {}
+    Climb climbing = new Climb() {};
+}
+```
