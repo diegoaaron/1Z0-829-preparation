@@ -46,7 +46,26 @@ public class Lemur extends Primate implements HasTail {
 }
 ```
 
+```java
+// En este ejemplo, la referencia hasTail solo tiene acceso directo a los métodos definidos con la interfaz HasTail; por lo tanto, 
+// no sabe que la variable age es parte del objeto. Del mismo modo, la referencia primate solo tiene acceso a los 
+// métodos definidos en la clase Primate y no tiene acceso directo al método isTailStriped()
+
+HasTail hasTail = new Lemur();
+System.out.println(hasTail.age); // Error de compilación
+
+Primate primate = new Lemur();
+System.out.println(primate.isTailStriped()); // Error de compilación
+```
+
+#### Objeto vs Referencia
+
+En Java, todos los objetos se acceden por referencia, por lo que como desarrollador nunca tienes acceso directo al objeto mismo. Conceptualmente, sin embargo, deberías considerar el objeto como la entidad que existe en memoria, asignada por el Java Runtime Environment. Independientemente del tipo de referencia que tengas para el objeto en memoria, el objeto en sí mismo no cambia. Por ejemplo, dado que todos los objetos heredan de `java.lang.Object`, todos pueden ser referenciados a `java.lang.Object`, como se muestra en el siguiente ejemplo:
 
 ```java
-
+Lemur lemur = new Lemur();
+Object lemurAsObject = lemur;
 ```
+
+Aunque el objeto Lemur se haya asignado a una referencia con un tipo diferente, el objeto en sí no ha cambiado y sigue existiendo como un objeto Lemur en memoria. Lo que ha cambiado, entonces, es nuestra capacidad para acceder a los métodos dentro de la clase Lemur con la referencia lemurAsObject. Sin una conversión explicita a Lemur, como se ve en la siguiente sección, ya no tenemos acceso a las propiedades del objeto Lemur.
+
