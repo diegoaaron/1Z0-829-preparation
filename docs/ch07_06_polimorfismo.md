@@ -120,3 +120,69 @@ public class Fish {
 }
 ```
 
+#### Casting (conversión) de interfaces
+
+Si bien el compilador puede aplicar reglas sobre la conversión a tipos no relacionados para las clases, no siempre puede hacer lo mismo para las interfaces. Recuerde que las instancias admiten herencia múltiple, lo que limita lo que el compilador puede razonar sobre ellas. Si bien una clase determinada puede no implementar una interfaz, es posible que alguna subclase si la implemente. Cuando se mantiene una referencia a una clase en particular, el compilador no sabe qué subtipo específico está manteniendo. 
+
+```java
+// En este programa, se creó un objeto Wolf y luego se asigna a un tipo de referencia Wolf en la línea 140. 
+// Con las interfaces, el compilador tiene una capacidad limitada para aplicar muchas reglas porque, aunque un tipo 
+// de referencia no implemente una interfaz, una de sus subclases si podría. Por lo tanto, permite la conversión no 
+// válida al tipo de referencia Dog en la línea 141, aunque Dog y Wolf no estén relacionados. Aunque el código compile, 
+// todavía lanza una ClassCastException en tiempo de ejecución. 
+
+interface Canine {}
+interface Dogo {}
+class Wolf implements Canine {}
+
+public class BadCats{
+    public static void main(String[] args) {
+        Wolf wolfy = new Wolf();
+        Dogo badWolf = (Dogo) wolfy;
+    }
+}
+```
+
+Dejando de lado esta limitación, el compilador puede aplicar una regla sobre la conversión de interfaces. El compilador no permite una conversión de una referencia de interfaz a una referencia de objeto si el tipo de objeto no puede implementar la interfaz (por ejemplo la clase está marcada como final). 
+
+Por ejemplo, si la clase `Wolf` está marcada como `final` en la línea 136, la línea 141 ya no se compila. El compilador reconoce que no hay subclases posibles de Wolf capaces de implementar la interfaz Dog.
+
+#### El operador `intanceof`
+
+El operador `instanceof` se puede usar para verificar si un objeto pertenece a una clase o interfaz en particular y para evitar una `ClassCastException` en tiempo de ejecución.
+
+```java
+class Rodent {}
+
+public class Capybara extends  Rodent {
+    public static void main(String[] args) {
+        Rodent rodent = new Rodent();
+        var capybara = (Capybara) rodent; // Lanzará ClassCastException en tiempo de ejecución
+    }
+}
+
+// podemos cambiar la línea 160 por:
+// Ahora el fragmento de código no lanza una excepción en tiempo de ejecución y realiza la conversión solo si el operador instanceof tiene éxito. 
+
+if (rodent instanceof Capybara) {
+    // Do stuff
+}
+```
+
+Asi como el compilador no permite convertir un objeto a tipos no relacionados, tampoco permite que instanceof se use con tipos no relacionados. 
+
+Podemos demostrar esto con nuestras clases `Bird` y `Fish` no relacionadas: 
+
+```java
+public class Bird {}
+
+public class Fish {
+    public static void main(String[] args) {
+        Fish fish = new Fish();
+        if (fish instanceof Bird) { // No compila
+            // Do stuff
+        }
+    }
+}
+```
+
