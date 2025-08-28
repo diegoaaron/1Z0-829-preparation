@@ -102,5 +102,21 @@ Resumiendo las reglas para el examen:
 * En tiempo de ejecución, una conversión no válida de una referencia a un tipo incompatible da como resultado que se lance una `ClassCastExcpetion`.
 * El compilador no permite conversiones a tipos no relacionados
 
-#### Deshabilitando casting (conversión)
+#### Casting (conversión) no permitida
+
+Esta última regla es un poco más complicada. En el ejemplo anterior, pudimos convertir una referencia `Primate` a una referencia `Lemur` porque `Lemur` es una subclase de `Primate` y, por lo tanto, está relacionada. 
+
+```java
+// En este ejemplo, las clases Fish y Bird no están relacionadas a través de ninguna 
+// jerarquía de clases que el compilador conozca; por lo tanto, el código no se compilará. 
+
+public class Bird {}
+
+public class Fish {
+    public static void main(String[] args) {
+        Fish fish = new Fish();
+        Bird bird = (Bird) fish; // No compila: tipos no relacionados
+    }
+}
+```
 
