@@ -210,7 +210,6 @@ public class EmperorPenguin extends Penguin {
         new EmperorPenguin().printInfo(); // 8
     }
 }
-
 ```
 
 Si dijiste 8, entonces estás en camino a entender el polimorfismo. Este ejemplo, el objeto sobre el que opera en memoria es un `EmperorPenguin`. El método `getHeight()` se anula en la subclase, lo que significa que todas ls llamadas a este se reemplazan en tiempo de ejecución. 
@@ -223,3 +222,78 @@ También significa que la clase padre no necesita actualizarse para usar el mét
 
 #### Sobrecarga vs. ocultación de miembros
 
+Mientras que la anulación de métodos reemplaza el método en todos los lugares donde se llama, la ocultación de métodos estáticos y variables no lo hace. 
+
+Estrictamente hablando, ocultar miembros no es una forma de polimorfismo, ya que los métodos y las variables mantienen sus propiedades individuales. 
+
+A diferencia de la anulación de métodos, ocultar miembros es muy sensible al tipo de referencia y la ubicación donde se utiliza el miembro. 
+
+```java
+class Penguin {
+    public static int getHeight() {
+        return 3;
+    }
+    
+    public void printInfo() {
+        System.out.print(this.getHeight());
+    }
+}
+
+public class CrestedPenguin extends Penguin {
+    public static int getHeight() {
+        return 8;
+    }
+    
+    public static void main(String... fish) {
+        new CrestedPenguin().printInfo(); // 3
+    }
+}
+```
+
+El ejemplo de `CrestedPenguin` es casi idéntico a nuestro ejemplo anterior de `EmperorPenguin`, aunque como probablemente ya habrás adivinado, imprime 3 en lugar de 8. 
+
+El método `getHeight()` es estático y, por lo tanto, está oculto, no sobrescrito. El resultado es que llamar a `getHeight()` en `CrestedPenguin` devuelve un valor diferente que llamarlo en `Penguin`, incluso si el objeto subyacente es el mismo. 
+
+Contrasta esto con la sobrescritura de un método, donde devuelve el mismo valor para un objeto independientemente de en qué clase se llame.
+
+¿Qué pasa con el hecho de que usamos `this` para acceder a un método estático en `this.getHeight()`? 
+
+Aunque se te permite usar una referencia de instancia para acceder a una variable o método estático, hacerlo a menudo se desaconseja. 
+
+El compilador te advertirá cuando accedas a miembros estáticos de una manera no estática. En este caso, la referencia this no tuvo impacto en la salida del programa.
+
+```java
+class Marsupial {
+    protected int age = 2;
+    public static boolean isBiped() {
+        return false;
+    }
+}
+
+public class Kangaroo extends Marsupial {
+    protected int age = 6;
+    public static boolean isBiped() {
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        Kangaroo joey = new Kangaroo();
+        Marsupial moey = joey;
+        System.out.println(joey.isBiped());
+        System.out.println(moey.isBiped());
+        System.out.println(joey.age);
+        System.out.println(moey.age);
+    }
+}
+
+// true
+// false
+// 6
+// 2
+```
+
+En este ejemplo, solo un objeto (de tipo Kangaroo) es creado y almacenado en memoria. 
+
+Dado que los métodos estáticos solo pueden ser ocultos, no sobrescritos, Java usa el tipo de referencia para determinar qué versión de `isBiped()` debe ser llamada, resultando en que `joey.isBiped()` imprima true y `moey.isBiped()` imprima false.
+
+Del mismo modo, la variable age está oculta, no sobrescrita, por lo que el tipo de referencia se usa para determinar qué valor mostrar. Esto resulta en que `joey.age` devuelva 6 y `moey.age` devuelva 2.
