@@ -186,3 +186,40 @@ public class Fish {
 }
 ```
 
+#### Polimorfismo y sobrecarga de métodos
+
+En Java, el polimorfismo establece que cuando se anula un método, se reemplazan todas las llamadas a él, incluso las definidas en la clase padre. 
+
+```java
+class Penguin {
+    public int getHeight() {
+        return 3;
+    }
+    
+    public void printInfo() {
+        System.out.print(this.getHeight());
+    }
+}
+
+public class EmperorPenguin extends Penguin {
+    public int getHeight() {
+        return 8;
+    }
+    
+    public static void main(String[] args) {
+        new EmperorPenguin().printInfo(); // 8
+    }
+}
+
+```
+
+Si dijiste 8, entonces estás en camino a entender el polimorfismo. Este ejemplo, el objeto sobre el que opera en memoria es un `EmperorPenguin`. El método `getHeight()` se anula en la subclase, lo que significa que todas ls llamadas a este se reemplazan en tiempo de ejecución. 
+
+A pesar de que `printInfo()` está definido en la clase `Penguin`, llamar a `getHeight()` en el objeto, llama al método asociado con el objeto preciso en memoria, no al tipo de referencia actual donde se llama. Incluso usando la referencia `this`, que es opcional en este ejemplo, no se llama a la versión padre porque el método ha sido reemplazado.
+
+La capacidad del polimorfismo para reemplazar métodos en tiempo de ejecución mediante la anulación es una de las propiedades más importantes de Java. Permite crear modelos de herencia complejos con subclases que tienen su propia implementación personalizada de métodos anulados. 
+
+También significa que la clase padre no necesita actualizarse para usar el método personalizado o anulado. Si el método se anula correctamente, entonces la versión anulada se usara en todos los lugares donde se llame. Recuerda que puedes optar por limitar el comportamiento polimórfico marcando los métodos como finales, lo que evita que una subclase lo sobrescriba.
+
+#### Sobrecarga vs. ocultación de miembros
+
