@@ -382,6 +382,3 @@ public interface ZooRenovation {
 * Trata los métodos privados, abstractos, predeterminados y no estáticos como pertenecientes a una instancia de la interfaz.
 * Trata los métodos y variables estáticos como pertenecientes al objeto de clase de la interfaz. 
 * Todos los tipos de métodos de interfaz privados solo son accesibles dentro de la declaración de la interfaz.
-
-
-## -----------------------
