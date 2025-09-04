@@ -18,7 +18,7 @@ public abstract interface CanBurrow {
 * una interfaz tiene modificadores implícitos a diferencia de las clases abstractas
 * una interfaz no requiere tener definido ningún método para existir
 
-_Un modificador implícito es uno que el compilador inserta automáticamente en el código_
+Un modificador implícito es uno que el compilador inserta automáticamente en el código
 
 ```java
 // compila
@@ -38,7 +38,7 @@ public final interface WalksOnEightLegs {}
 
 Haciendo uso de las interfaces a través de la palabra reservada `implements`:
 
-* El modificador de acceso del método de la interfaz es implícitamente público en Climb, pero la clase FieldMouse debe declararlo explícitamente.
+* El modificador de acceso del método de la interfaz es implícitamente público en `Climb`, pero la clase `FieldMouse` debe declararlo explícitamente.
 * Una clase puede implementar múltiples interfaces, separándolas con una `,` coma.
 
 ```java
@@ -106,8 +106,7 @@ public class Hyena {}
 public interface HasFur extends Hyena {} // No compila porque la interfaz HasFur no puede extender una clase
 ```
 
-Java acepta la herencia de dos métodos abstractos que tienen declaraciones de métodos compatibles 
-(métodos que se pueden anular por uno solo, ya que se puede usar un tipo de retorno covariante)
+Java acepta la herencia de dos métodos abstractos que tienen declaraciones de métodos compatibles (métodos que se pueden anular por uno solo, ya que se puede usar un tipo de retorno covariante)
 
 ```java
 public interface Herbivore {
