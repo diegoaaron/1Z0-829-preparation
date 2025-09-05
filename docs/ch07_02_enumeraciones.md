@@ -4,9 +4,9 @@
 
 En programación, es común tener variables con un grupo específico de valores como días de la semana o estaciones del año, una enumeración es un conjunto fijo de constantes.
 
-_En una enumeración simple el `;` al final es opcional._
+En una enumeración simple el `;` al final es opcional.
 
-_Las enumeraciones se consideran constantes por lo que se escriben usando el formato SNAKE_CASE._
+Las enumeraciones se consideran constantes por lo que se escriben usando el formato SNAKE_CASE.
 
 * Las enumeraciones son como constantes estáticas y finales, ya que se inicializan solo una vez en la JVM
 * No se puede extender una enumeración, sus valores son fijos. 
@@ -26,9 +26,9 @@ public enum NuevasSeason extends Season {} // No compila, ya que no se puede ext
 
 Las enumeraciones tienen métodos implícitos como `values()`, `name()`, `ordinal()` y  `valueOf()`
 
-_No se puede comparar un entero con un valor de enumeración, ya que las enumeraciones son un propio tipo y los enteros son primitivos._
+No se puede comparar un entero con un valor de enumeración, ya que las enumeraciones son un propio tipo y los enteros son primitivos.
 
-_Al trabajar con código antiguo podemos obtener el valor de una enumeración pasando una cadena como parámetro al método `valueOf()`, el cual devuelve una instancia de la enumeración correspondiente._
+Al trabajar con código antiguo podemos obtener el valor de una enumeración pasando una cadena como parámetro al método `valueOf()`, el cual devuelve una instancia de la enumeración correspondiente.
 
 ```java
 for (var season : Season.values()) {
@@ -46,7 +46,7 @@ Season s = Season.valueOf("VERANO");  // Devuelve el objeto Season.VERANO
 Season t = Season.valueOf("verano"); // Devuelve un error IllegalArgumentException ya que no existe un valor de enumeración "verano" en minusculas 
 ```
 
-#### Usando enumeraciones con sentencias SWITCH
+### Usando enumeraciones con sentencias SWITCH
 
 En un switch con enumeraciones, Java va a inferir que estás usando un tipo de enumeración por lo que se puede usar directamente el nombre de la enumeración en un switch.
 
@@ -73,7 +73,7 @@ var message = switch (summer) {
 };
 ```
 
-#### Agregando constructores, campos y métodos a las enumeraciones
+### Agregando constructores, campos y métodos a las enumeraciones
 
 Una enumeración básica solo tiene valores, una compleja puede tener elementos adicionales.
 
@@ -195,5 +195,4 @@ public enum Season implements Weather {
 // Intenta que tus enumeraciones sean simples.
 ```
 
-_La lista de valores de enumeración siempre van la inicio._
-
+La lista de valores de enumeración siempre van la inicio.
