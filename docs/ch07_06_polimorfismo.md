@@ -58,7 +58,7 @@ Primate primate = new Lemur();
 System.out.println(primate.isTailStriped()); // Error de compilación
 ```
 
-#### Objeto vs Referencia
+### Objeto vs Referencia
 
 En Java, todos los objetos se acceden por referencia, por lo que como desarrollador nunca tienes acceso directo al objeto mismo. Conceptualmente, sin embargo, deberías considerar el objeto como la entidad que existe en memoria, asignada por el Java Runtime Environment. Independientemente del tipo de referencia que tengas para el objeto en memoria, el objeto en sí mismo no cambia. Por ejemplo, dado que todos los objetos heredan de `java.lang.Object`, todos pueden ser referenciados a `java.lang.Object`, como se muestra en el siguiente ejemplo:
 
@@ -79,7 +79,7 @@ Podemos resumir este principio con las siguientes dos reglas:
 
 Por lo tanto, se deduce que cambiar correctamente una referencia de un objeto a un nuevo tipo de referencia puede dar acceso a nuevas propiedades del objeto; pero recuerde que esas propiedades existían antes de que ocurriera el cambio de referencia. 
 
-#### Casting (conversión) de objetos
+### Casting (conversión) de objetos
 
 En el ejemplo anterior creamos una única instancia de un objeto Lemur y accedimos a él mediante referencias de superclase e interfaz. Sin embargo, una vez que cambiamos el tipo de referencia, perdimos el acceso a miembros más específicos definidos en la subclase que aún existen dentro del objeto. Podemos recuperar esas referencias volviendo a convertir el objeto a la subclase específica de la que proviene:
 
@@ -102,7 +102,7 @@ Resumiendo las reglas para el examen:
 * En tiempo de ejecución, una conversión no válida de una referencia a un tipo incompatible da como resultado que se lance una `ClassCastExcpetion`.
 * El compilador no permite conversiones a tipos no relacionados
 
-#### Casting (conversión) no permitida
+### Casting (conversión) no permitida
 
 Esta última regla es un poco más complicada. En el ejemplo anterior, pudimos convertir una referencia `Primate` a una referencia `Lemur` porque `Lemur` es una subclase de `Primate` y, por lo tanto, está relacionada. 
 
@@ -120,7 +120,7 @@ public class Fish {
 }
 ```
 
-#### Casting (conversión) de interfaces
+### Casting (conversión) de interfaces
 
 Si bien el compilador puede aplicar reglas sobre la conversión a tipos no relacionados para las clases, no siempre puede hacer lo mismo para las interfaces. Recuerde que las instancias admiten herencia múltiple, lo que limita lo que el compilador puede razonar sobre ellas. Si bien una clase determinada puede no implementar una interfaz, es posible que alguna subclase si la implemente. Cuando se mantiene una referencia a una clase en particular, el compilador no sabe qué subtipo específico está manteniendo. 
 
@@ -147,7 +147,7 @@ Dejando de lado esta limitación, el compilador puede aplicar una regla sobre la
 
 Por ejemplo, si la clase `Wolf` está marcada como `final` en la línea 136, la línea 141 ya no se compila. El compilador reconoce que no hay subclases posibles de Wolf capaces de implementar la interfaz Dog.
 
-#### El operador `intanceof`
+### El operador `intanceof`
 
 El operador `instanceof` se puede usar para verificar si un objeto pertenece a una clase o interfaz en particular y para evitar una `ClassCastException` en tiempo de ejecución.
 
@@ -186,7 +186,7 @@ public class Fish {
 }
 ```
 
-#### Polimorfismo y sobrecarga de métodos
+### Polimorfismo y sobrecarga de métodos
 
 En Java, el polimorfismo establece que cuando se anula un método, se reemplazan todas las llamadas a él, incluso las definidas en la clase padre. 
 
@@ -220,7 +220,7 @@ La capacidad del polimorfismo para reemplazar métodos en tiempo de ejecución m
 
 También significa que la clase padre no necesita actualizarse para usar el método personalizado o anulado. Si el método se anula correctamente, entonces la versión anulada se usara en todos los lugares donde se llame. Recuerda que puedes optar por limitar el comportamiento polimórfico marcando los métodos como finales, lo que evita que una subclase lo sobrescriba.
 
-#### Sobrecarga vs. ocultación de miembros
+### Sobrecarga vs. ocultación de miembros
 
 Mientras que la anulación de métodos reemplaza el método en todos los lugares donde se llama, la ocultación de métodos estáticos y variables no lo hace. 
 
