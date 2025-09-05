@@ -1,6 +1,6 @@
 # Cap. 07 - Beyond Classes
 
-## Clases Selladas  - Sealing Classes
+## Clases Selladas - Sealing Classes
 
 Una clase sellada es una clase que restringe qué otras clases pueden extenderla directamente. 
 
@@ -12,7 +12,7 @@ public final class Kodiak extends Bear {} // Kodiak es una clase final, no puede
 public non-sealed class Panda extends Bear {} //Otras clases sí pueden extender de Panda sin restricciones
 ```
 
-#### Palabras clave asociadas
+**Palabras clave asociadas:**
 
 - `sealed`: Define una clase sellada.
 - `non-sealed`: Permite que una clase sellada sea extendida sin restricciones.
@@ -27,9 +27,9 @@ public final class Timber extends Wolf {}
 public final class MyWolf extends Wolf {} // no compila porque MyWolf no esta en la lista de clases permitidas
 ```
 
-_Las clases selladas son declaradas comúnmente con el modificador `abastract` aunque no es obligatorio_
+Las clases selladas son declaradas comúnmente con el modificador `abastract` aunque no es obligatorio
 
-#### Compilación de clases selladas
+### Compilación de clases selladas
 
 Si intentamos compilar la siguiente clase sellada sin ningún código:
 
@@ -55,9 +55,9 @@ public final class Emperor {}
 // No compilara porque Emperor no extiende Penguin
 ```
 
-#### Especificaciones para el modificador de las sub-clases
+### Especificaciones para el modificador de las sub-clases
 
-Mientras que en las interfaces se puede tener un cierto número de modificadores implícitos, en las clases selladas cada subclase debe tener uno de los siguientes modificadores: final, non-sealed o abstract. 
+Mientras que en las interfaces se puede tener un cierto número de modificadores implícitos, en las clases selladas cada subclase debe tener uno de los siguientes modificadores: `final`, `non-sealed` o `abstract`. 
 
 **Una sub-clase `final`**
 
@@ -125,7 +125,7 @@ public sealed class Snake permits Snake.Cobra {
 }
 ```
 
-Cubriremos las clases anidadas en breve. Por ahora, solo necesitamos saber que una clase anidada es una clase definida dentro de otra clase y que la regla de omisión también se aplican a estas.
+Necesitamos saber que una clase anidada es una clase definida dentro de otra clase y que la regla de omisión también se aplican a estas.
 
 | Ubicación de las sub-clases directas     | palabra `permits`            |
 |------------------------------------------|------------------------------|
@@ -133,7 +133,7 @@ Cubriremos las clases anidadas en breve. Por ahora, solo necesitamos saber que u
 | En el mismo archivo que la clase sellada | Permitido, pero no requerido |
 | Anidado dentro de la clase sellada       | Permitido, pero no requerido |
 
-#### Sellado de interfaces
+### Sellado de interfaces
 
 Además de las clases, las interfaces también se pueden sellar. La idea es análoga a la de las clases, y se aplican muchas de las mismas reglas. Por ejemplo, la interfaz sellada debe aparecer en el mismo paquete o módulo con nombre que las clases o interfaces que la extienden o implementan directamente.
 
@@ -160,4 +160,3 @@ Hay que tener en cuenta que las interfaces son implícitamente abstractas y no s
 * Las subclases directas de las clases selladas se deben marcarse como `sealed`, `no-sealed` o `final`.  
 * La cláusula `permits` es opcional si la clase sellada y sus subclases directas se declaran dentro del mismo archivo o si las subclases están anidadas dentro de la clase sellada. 
 * Las interfaces se pueden sellar para limitar las clases que las implementan o las interfaces que las extienden. 
-
