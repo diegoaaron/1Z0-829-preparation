@@ -65,13 +65,11 @@ public class Vet {
 }
 ```
 
-#### Definiendo un registro
+### Definiendo un registro
 
-```java
-public record Crane(int numbersEggs, String name) {}
-```
+`public record Crane(int numbersEggs, String name) {}`
 
-La línea anterior crea un registro con el cual el compilador inserta la implementación de las variables asi como los métodos de objeto equals(), hashCode() y toString().
+La línea anterior crea un registro con el cual el compilador inserta la implementación de las variables asi como los métodos de objeto `equals()`, `hashCode()` y `toString()`.
 
 Ya que por defecto el compilador inyecta un constructor con el mismo orden de los parámetros al crear el registro, si se crea una instancia sin respetar ese orden u omitiendo un valor se genera un error de compilación.
 
@@ -105,11 +103,9 @@ System.out.println(father.hashCode() + "," + copy.hashCode()); // 1007, 1007
 
 Es permitido crear un registro sin ningún componente, aunque no es muy útil.
 
-```java
-public record Empty() {}
-```
+`public record Empty() {}`
 
-#### Entendiendo la inmutabilidad de los registros
+### Entendiendo la inmutabilidad de los registros
 
 Ya que los registros no tienen setters y no se pueden modificar de ninguna forma después de su creación, la unica opción es crear otro objeto.
 
@@ -137,11 +133,11 @@ public interface Bird {}
 public record Crane(int numbersEggs, String name) implements Bird {}
 ```
 
-#### Creando constructores 
+### Creando constructores 
 
 Podemos definir la creación de un constructor dentro del registro de forma denominado;
 
-**El constructor largo:**
+#### El constructor largo
 
 El cual el compilador lo inserta automáticamente, ya que utiliza todos los campos del registro:
 
@@ -165,7 +161,7 @@ public record Crane(int numbersEggs, String name) {
 }
 ```
 
-**El constructor corto:**
+#### El constructor corto
 
 Este tipo es util, ya que permite que los registros procesen la validación y las transformaciones. No requiere que nombremos a los parámetros. 
 
@@ -196,7 +192,7 @@ public record Crane(int numbersEggs, String name) {
 }
 ```
 
-**Sobrecarga de constructores**
+### Sobrecarga de constructores
 
 También podemos crear constructores sobrecargados que tomen una lista de parámetros diferentes, esto se relaciona directamente con los constructores de forma larga.
 
@@ -232,12 +228,12 @@ public record Crane(int numbersEggs, String name) {
 }
 ```
 
-#### Personalizando registros
+### Personalizando registros
 
 Los registros aceptan muchos de los modificadores que se pueden aplicar a las clases como: 
 
 * Constructores sobrecargados y compactos
-* Métodos de instancia, incluyendo la anulación de cualquier método proporcionado (equals(), hashCode(), toString())
+* Métodos de instancia, incluyendo la anulación de cualquier método proporcionado (`equals()`, `hashCode()`, `toString()`)
 * Clases anidadas, interfaces, anotaciones, enumeraciones y registros
 
 ```java
