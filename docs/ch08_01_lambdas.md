@@ -75,3 +75,25 @@ Y si queremos los animales que no pueden nadar sería:
 
 `print(animals, a -> !a.canSwim());`
 
+Las lambdas usan un concepto llamado ejecución diferida que significa que el código se especifica ahora, pero se ejecuta más tarde. 
+
+En este caso "más tarde" está dentro del cuerpo del método `print()`, a diferencia de cuando se pasa al método de forma normal.
+
+### Sintaxis de las Lambdas
+
+La sintaxis mas basica de un lambda es:
+
+`a -> a.canHop()`
+
+Las lambdas funcionan con interfaces que tienen exactamente un método abstracto. En este caso, Java analiza la interfaz CheckTrait, que tiene un método. 
+
+La lambda en nuestro ejemplo sugiere que Java debería llamar a un método con un parámetro Animal que devuelva un valor booleano que sea el resultado de `a.canHop()`
+
+Java se basa en el contexto para determinar el significado de las expresiones lambda. Entendiendo contexto a donde y cómo se interpreta la lambda. 
+
+Refiriéndonos a nuestro ejemplo anterior, pasamos la lambda como segundo parámetro del método `print()`:
+
+`print(animals, a -> a.canHop());`
+
+El método `print()` espera un `CheckTrait` como segundo parámetro:
+
