@@ -95,5 +95,19 @@ Refiriéndonos a nuestro ejemplo anterior, pasamos la lambda como segundo parám
 
 `print(animals, a -> a.canHop());`
 
-El método `print()` espera un `CheckTrait` como segundo parámetro:
+El método `print()` espera un objeto `CheckTrait` como segundo parámetro:
+
+`private static void print(List<Animal> animals, CheckTrait checker) {}`
+
+Como estamos pasando una lambda, Java intenta mapear nuestra lambda a la declaración del método abstracto en la interfaz CheckTrait:
+
+`boolean test(Animal a);`
+
+Dado que el método de esa interfaz toma un Animal, el parámetro lambada tiene que ser un Animal. Y como el método de esa interfaz devuelve un booleano, sabemos que la lambda devuelve un booleano.
+
+La sintaxis de las lambdas son complicadas porque tiene valores opciones, por ejemplo las siguientes expresiones son iguales:
+
+`a -> a.canHop()`
+
+`(Animal a) -> { return a.canHop(); }`
 
