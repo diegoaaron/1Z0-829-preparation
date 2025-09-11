@@ -111,3 +111,7 @@ La sintaxis de las lambdas son complicadas porque tiene valores opciones, por ej
 
 `(Animal a) -> { return a.canHop(); }`
 
+Los parentesis alrededor de los parámetros lambda se puede omitir solo si hay un solo parámetro y su tipo no se indica explicitamente.
+
+Se puede omitir una sentencia return y un punto y coma cuando no se utilizan llaves, pero esto no aplica cuando se tiene dos o más declaraciones. 
+
