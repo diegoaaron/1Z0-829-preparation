@@ -113,5 +113,27 @@ La sintaxis de las lambdas son complicadas porque tiene valores opciones, por ej
 
 Los parentesis alrededor de los parámetros lambda se puede omitir solo si hay un solo parámetro y su tipo no se indica explicitamente.
 
-Se puede omitir una sentencia return y un punto y coma cuando no se utilizan llaves, pero esto no aplica cuando se tiene dos o más declaraciones. 
+Se puede omitir una sentencia `return` y un `;` cuando no se utilizan llaves, pero esto no aplica cuando se tiene dos o más declaraciones. 
+
+Las siguientes sentencias también son posibles: 
+
+`a -> {return a.canHop();}`
+
+`(Animal a) -> a.canHop()`
+
+La primera fila toma cero parámetros y siempre devuelve el valor booleano verdadero. 
+
+La segunda fila toma un parámetro y llama a un método sobre él, devolviendo el resultado. 
+
+La tercera fila hace lo mismo, excepto que define explicitamente el tipo de la variable. 
+
+Las dos últimas filas toman 2 parámetros e ignoran uno de ellos.
+
+| Lambda                                         | # de parametros |
+|------------------------------------------------|-----------------|
+| `() -> true`                                   | 0               |
+| `x -> x.startsWith("test")`                    | 1               |
+| `(String x) -> x.startsWith("test")`           | 1               |
+| `(x,y) -> {return x.startsWith("test");}`      | 2               |
+| `(String x, String y) -> x.startsWith("test")` | 2               |
 
