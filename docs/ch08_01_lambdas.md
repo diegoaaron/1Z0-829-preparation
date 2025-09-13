@@ -137,3 +137,11 @@ Las dos últimas filas toman 2 parámetros e ignoran uno de ellos.
 | `(x,y) -> {return x.startsWith("test");}`      | 2               |
 | `(String x, String y) -> x.startsWith("test")` | 2               |
 
+### Codificando interfaces funcionales
+
+En las secciones anteriores declaramos la interfaz CheckTrait, que tiene un método que debe ser implementado. 
+
+Las lambdas tienen una relación con dichas interfaces. Una interfaz funcional es una interfaz que contiene un solo método abstracto. 
+
+Se le denomina **single abstract method** (SAM). 
+
