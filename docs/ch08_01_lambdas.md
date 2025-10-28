@@ -145,3 +145,17 @@ Las lambdas tienen una relación con dichas interfaces. Una interfaz funcional e
 
 Se le denomina **single abstract method** (SAM). 
 
+```java
+// En este ejemplo la interfaz Sprint es de tipo funcional (me aseguro al definir la anotación) porque solo tiene un método abstracto
+@FunctionalInterface
+public interface Sprint {
+    public void sprint(int speed);
+}
+
+public class Tiger implements Sprint{
+    public void sprint(int speed){
+        System.out.println("Animals is sprinting fast!" + speed);
+    }
+}
+```
+
