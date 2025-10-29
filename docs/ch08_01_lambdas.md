@@ -191,4 +191,99 @@ public interface Dive {
     public abstract int hashCode();
     pubic void dive();
 }
+
+// Esta interfaz arroja un error ya que 'equals' no recibe un tipo 'Object' sino 'Hibernate' por lo que se convierte en un método abstracto y junto a 'void' ya serían 2.
+// Por lo que esta no podría ser una interfaz funcial
+public interface Hibernate {
+    String toString();
+    public boolean equals(Hibernate o);
+    public abstract int hashCode();
+    public void rest();
+}
 ```
+## Usando referencia de métodos
+
+La referencia a métodos es otra forma de hacer más facil la lectura de código al solo mencionar el nombre del método.
+
+Supongamos que estamos codificando un patito que intenta aprender a graznar. Primero tenemos una interfaz funcional:
+
+```java
+public interface LearnToSpeak {
+    void speak(String sound);
+}
+```
+A continuación, descubrimos que hay una clase auxiliar con la que el patito puede trabajar la cual se define de la siguiente forma
+
+```java
+public class DuckHelper {
+    public static void teacher(String name, LearnToSpeak trainer){
+        trainer.speak(name);
+    }
+}
+```
+
+Finalmente, juntamos todo y conocemos la implementación de la interfaz funcional usando lambda
+
+```java
+public class Duckling {
+    public static void makeSound(String sound){
+        LearnToSpeak learner = s -> System.out.println(s);
+        DuckHelper.teacher(sound,learner);
+    }
+}
+```
+
+Está bien la implementación, pero tiene una redundancia. La lambda declara un parámetro llamado s. 
+
+Sin embargo, ese parámetro solo se pasa a otro método. Una referencia a un método nos permite eliminar esa redundancia y, en su lugar, escribir esto: 
+
+```java
+LearnToSpeak learner = System.out::println;
+```
+
+El operador `::` le indica a Java que llame al método println() más tarde. Este operador crea una referencia al método `println`
+
+1. Reconoce que `LearnToSpeak.speak()` recibe un `String`
+2. Ve que `System.out.println()` también puede recibir un `String`
+3. Conecta ambos directamente sin necesidad de declarar parámetros intermedios
+
+**Explicación mas resumida**
+
+```java
+// 1. La interfaz funcional
+public interface LearnToSpeak {
+    void speak(String sound);
+}
+
+// 2. El helper que usa la estrategia
+public class DuckHelper {
+    public static void teacher(String name, LearnToSpeak trainer){
+        trainer.speak(name);
+    }
+}
+
+// 3. Duckling que junta todo
+public class Duckling {
+    public static void makeSound(String sound){
+        // Aquí defines CÓMO quieres que hable el patito
+        LearnToSpeak learner = System.out::println;
+
+        // Y se lo pasas al helper para que lo ejecute
+        DuckHelper.teacher(sound, learner);
+    }
+}
+
+// 4. Uso final
+public class Main {
+    public static void main(String[] args) {
+        Duckling.makeSound("Quack!");  // Imprime: Quack!
+    }
+}
+```
+
+Una referencia a un método y una lambda se comportan de la misma manera en tiempo de ejecución. 
+
+Puedes imaginar que el compilador convierte tus referencias a métodos en lambdas por ti. Hay cuatro formas para las referencias a métodos:
+
+### Llamando a métodos estaticos
+
