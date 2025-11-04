@@ -317,7 +317,22 @@ Esto lo hace por la información del contexto. Java busca un método que coincid
 ### Llamando a métodos de instancia en un objeto específico
 
 ```java
-interface Converter{
-    long round(double num);
+interface StringStart{
+    boolean beginningCheck(String prefix);
 }
 ```
+
+Ahora usaremos el método `startsWith()` de la clase String que toma un parámetro y devuelve un booleano.
+
+```java
+var str = "Zoo";
+StringStart methodRef = str::startsWith;
+StringStart lambda = s -> str.startsWith(s);
+
+System.out.println(methodRef.beginningCheck("A")); // false
+
+```
+La segunda línea muestra que queremos llamar a  `str:startsWith()` y pasar un parametro en tiempo de ejecución 
+
+En el siguiente ejemplo, creamos una interfaz funcional con un método que no acepta ningún parámetro, pero devuelve un valor.
+
