@@ -346,7 +346,7 @@ Lo implementamos de la siguiente forma
 ```java
 var str = "";
 StringChecker methodRef = str::isEmpty;
-StringStart lambda = s -> str.isEmpty();
+StringStart lambda = () -> str.isEmpty();
 
 System.out.println(methodRef.check()); // true
 ```
@@ -367,8 +367,75 @@ Implementamos la funcionalidad de la siguiente manera
 
 ```java
 StringParameterChecker methodRef = str::isEmpty;
-StringParameterChecker lambda = s -> str.isEmpty();
+StringParameterChecker lambda = s -> s.isEmpty();
 
 System.out.println(methodRef.check("Zoo")); // false
 ```
 
+La primera línea indica que el método que queremos llamar está en `String`, parece un método estático, pero no lo es.
+
+En cambio, Java sabe que isEmpty() es un método de instancia que no toma ningún parámetro. 
+
+Java utiliza el parámetro proporcionado en tiempo de ejecución como la instancia en la que se llama al método. 
+
+```java
+interface StringTwoParameterChecker{
+    boolean check(String text, String prefix);
+}
+```
+
+Implementamos la funcionalidad de la siguiente manera
+
+```java
+StringTwoParameterChecker methodRef = str::startsWith;
+StringTwoParameterChecker lambda = (s,p) -> s.startsWith(p);
+
+System.out.println(methodRef.check("Zoo","A")); // false
+```
+
+Dado que la interfaz funcional toma dos parámetros, Java tiene que determinar qué representan. 
+
+El primero siempre será la instancia del objeto para los métodos de instancia. Los demás seran parámetros del método.
+
+### Llamando a constructores
+
+Una referencia a un constructor es un tipo especial de referencia a un método que usa `new` en lugar de un método de instancia de un objeto.
+
+```java
+interface EmptyStringCreator{
+    String create();
+}
+```
+
+Para llamarla, usamos `new` como si fuera un nombre de método: 
+
+```java
+EmptyStringCreator methodRef = String::new;
+EmptyStringCreator lambda = () -> new String();
+
+var myString = methodRef.create();
+System.out.println(myString.equals("Snake")); //false
+```
+
+Se expande como las referencias a métodos que se han visto hasta ahora. 
+
+```java
+interface StringCopier{
+    String copy(String value);
+}
+```
+
+```java
+StringCopier methodRef = String::new;
+StringCopier lambda = x -> new String(x);
+
+var myString = methodRef.copy("Zebra");
+System.out.println(myString.equals("Zebra")); //true
+```
+
+En la implementación la primera línea de este ejemplo es igual al ejemplo anterior, 
+lo que indica que no siempre se puede determinar que método se puede llamar mirado la referencia del método.
+
+Hay que mirar el contexto para ver qué parámetros se utilizan y si hay un tipo de retorno. 
+
+### Revision de las referencias de métodos
