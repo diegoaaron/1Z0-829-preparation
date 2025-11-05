@@ -330,9 +330,45 @@ StringStart methodRef = str::startsWith;
 StringStart lambda = s -> str.startsWith(s);
 
 System.out.println(methodRef.beginningCheck("A")); // false
-
 ```
 La segunda línea muestra que queremos llamar a  `str:startsWith()` y pasar un parametro en tiempo de ejecución 
 
 En el siguiente ejemplo, creamos una interfaz funcional con un método que no acepta ningún parámetro, pero devuelve un valor.
+
+```java
+interface StringChecker{
+    boolean check();
+}
+```
+
+Lo implementamos de la siguiente forma
+
+```java
+var str = "";
+StringChecker methodRef = str::isEmpty;
+StringStart lambda = s -> str.isEmpty();
+
+System.out.println(methodRef.check()); // true
+```
+
+Dado que el método en String es un método de instancia, llamamos a la referencia, al método en una instancia de la clase String. 
+
+Si bien todas las **referencias a métodos** se pueden **convertir a lambdas**, lo contrario no siempre se cumple. 
+
+### Llamando a métodos de instancia en un parámetro
+
+```java
+interface StringParameterChecker{
+    boolean check(String text);
+}
+```
+
+Implementamos la funcionalidad de la siguiente manera
+
+```java
+StringParameterChecker methodRef = str::isEmpty;
+StringParameterChecker lambda = s -> str.isEmpty();
+
+System.out.println(methodRef.check("Zoo")); // false
+```
 
