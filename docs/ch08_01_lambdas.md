@@ -438,4 +438,6 @@ lo que indica que no siempre se puede determinar que método se puede llamar mir
 
 Hay que mirar el contexto para ver qué parámetros se utilizan y si hay un tipo de retorno. 
 
-### Revision de las referencias de métodos
+### Trabajando con interfaces funcionales integradas
+
+continua la pagina 15
