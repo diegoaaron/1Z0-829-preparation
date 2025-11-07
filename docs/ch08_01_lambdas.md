@@ -459,3 +459,48 @@ Si se necesita un segundo parámetro, usamos la siguiente letra U, si se necesit
 
 #### Implementación de Supplier
 
+Un Supplier se utiliza cuando se desea generar valores sin tomar ninguna entrada. 
+
+```java
+@FunctionalInterface
+public interface Supplier<T>{
+    T get();
+}
+```
+
+Puede crear un objeto LocalDate utilizando el método de fábrica `now()`
+
+```java
+Supplier<LocalDate> s1 = LocalDate::now;
+Supplier<LocalDate> s2 = () -> LocalDate.now();
+
+LocalDate d1 =  s1.get();
+LocalDate d2 =  s2.get();
+
+System.out.println(d1); //2022-02-20
+System.out.println(d2); //2022-02-20
+```
+
+Este ejemplo imprime una fecha 2 veces, una utilizando la referencia de métodos y la segunda usando una lambda. 
+
+Un Supplier se utiliza a menudo para construir objetos nuevos, como en el siguiente ejemplo: 
+
+```java
+Supplier<StringBuilder> s1 = StringBuilder::new;
+Supplier<StringBuilder> s2 = () -> new StringBuilder();
+
+System.out.println(s1.get()); // Cadena vacia
+System.out.println(s2.get()); // Cadena vacia
+```
+
+El siguiente ejemplo muestra la versatilidad en la cual utilizamos un generico dentro de otro generico 
+
+```java
+Supplier<ArrayList<String>> s3 = ArrayList::new;
+ArrayList<String> a1 = s3.get();
+System.out.println(a1); // []
+```
+
+#### Implementación de Consumer y BiConsumer
+
+
