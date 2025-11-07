@@ -440,4 +440,22 @@ Hay que mirar el contexto para ver qué parámetros se utilizan y si hay un tipo
 
 ### Trabajando con interfaces funcionales integradas
 
-continua la pagina 15
+Las siguientes interfaces se encuentra definidas en el paquete `java.util.function`. Se veran los genericos en el siguiente capítulo,
+pero se debe saber que `<T>` permite que la interfaz tome un objeto de un tipo específico. 
+
+Si se necesita un segundo parámetro, usamos la siguiente letra U, si se necesita un tipo de retorno distinto, elegimos R para el retorno con tipo genérico.
+
+| Functional interface | Return type | Method name | # of parameters |
+|----------------------|-------------|-------------|-----------------|
+| Supplier<T>          | T           | get()       | 0               |
+| Consumer<T>          | void        | accept(T)   | 1 (T)           |
+| BiConsumer<T, U>     | void        | accept(T,U) | 2 (T, U)        |
+| Predicate<T>         | boolean     | test(T)     | 1 (T)           |
+| BiPredicate<T, U>    | boolean     | test(T,U)   | 2 (T, U)        |
+| Function<T, R>       | R           | apply(T)    | 1 (T)           |
+| BiFunction<T, U, R>  | R           | apply(T,U)  | 2 (T, U)        |
+| UnaryOperator<T>     | T           | apply(T)    | 1 (T)           |
+| BinaryOperator<T>    | T           | apply(T,T)  | 2 (T, T)        |
+
+#### Implementación de Supplier
+
