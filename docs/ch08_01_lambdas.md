@@ -503,4 +503,29 @@ System.out.println(a1); // []
 
 #### Implementación de Consumer y BiConsumer
 
+Se usa Consumer cuando se quiere hacer algo con un parámetro, pero no devolver nada.
+
+BiConsumer hace lo mismo, excepto que toma 2 parámetros. Las interfaces se definen de la siguiente manera:
+
+```java
+@FunctionalInterface
+public interface Consumer<T>{
+    void accept(T t)
+}
+
+@FunctionalInterface
+public interface BiConsumer<T,U>{
+    void accept(T t, U u)
+}
+
+Consumer<String> c1 = System.out::println;
+Consumer<String> c2 = x -> System.out.println(x);
+
+c1.accept("Annie"); //Annie
+c2.accept("Annie"); //Annie
+
+// BiConsumer 
+```
+
+
 
