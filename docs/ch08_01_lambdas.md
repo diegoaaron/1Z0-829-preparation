@@ -525,7 +525,17 @@ c1.accept("Annie"); //Annie
 c2.accept("Annie"); //Annie
 
 // BiConsumer 
+var map = new HashMap<String, Integer>();
+BiConsumer<String, Integer> b1 = map::put;
+BiConsumer<String, Integer> b2 = (k,v) -> map.put(k,v);
+
+b1.accept("chicken", 7);
+b2.accept("chick", 1);
+
+System.out.println(map); //{chicken=7,chick=1); 
 ```
+En el ejemplo anterior durante la llamada de b1 se usan una referencia por método de instancia a un objeto, ya que queremos 
+llamar a un método en la variable local map. 
 
-
+#### Implementación de Predicate y BiPredicate
 
