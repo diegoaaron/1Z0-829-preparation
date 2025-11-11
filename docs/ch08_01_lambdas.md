@@ -539,3 +539,56 @@ llamar a un método en la variable local map.
 
 #### Implementación de Predicate y BiPredicate
 
+Predicate se usa a menudo al filtrar o comparar. Ambas operaciones son parecidas solo que la segunda acepta dos parametros. 
+
+```java
+@FunctionalInterface
+public interface Predicate<T>{
+    boolean test(T t);
+}
+
+@FunctionalInterface
+public interface BiPredicate<T,U>{
+    boolean test(T t, U u);
+}
+
+Predicate<String> p1 = String::isEmpty;
+Predicate<String> p2 = x -> x.isEmpty();
+
+System.out.println(p1.test("")); //true
+System.out.println(p2.test("")); //true 
+
+BiPredicate<String> b1 = String::startsWith;
+BiPredicate<String> b2 = (string, prefix)-> string.startsWith(prefix);
+
+System.out.println(b1.test("chicken", "chick")); //true
+System.out.println(b2.test("chicken", "chick")); //true
+```
+
+En el ejemplo anterior se puede ver como el uso de la referencia de método ahorra escritura pero se debe saber lo que se hace.  
+
+#### Implementación de Functions y BiFunctions
+
+Un Function es responsable de convertir un parámetro en un valor de un tipo diferente y devolverlo. 
+
+De la misma forma un BiFunction es  responsable de convertir dos parámetros en un valor y devolverlo.
+
+```java
+@FunctionalInterface
+public interface Function<T,R>{
+    R apply(T t);
+}
+
+@FunctionalInterface
+@public interface BiFunction<T,U,R>{
+    R apply(T t, U u;
+}
+
+Function<String, Integer> f1 = String::length;
+Function<String, Integer> f2 = x -> x.length();
+
+System.out.println(f1.apply("cluck")); //5
+System.out.println(f2.apply("cluck")); //5
+```
+
+El ejemplo anterior
