@@ -581,7 +581,7 @@ public interface Function<T,R>{
 
 @FunctionalInterface
 @public interface BiFunction<T,U,R>{
-    R apply(T t, U u;
+    R apply(T t, U u);
 }
 
 Function<String, Integer> f1 = String::length;
@@ -589,6 +589,36 @@ Function<String, Integer> f2 = x -> x.length();
 
 System.out.println(f1.apply("cluck")); //5
 System.out.println(f2.apply("cluck")); //5
+
+BiFunction<String, String, String> b1 = String::concat;
+BiFunction<String, String, String> b2 = (string, toAdd) -> string.concat(toAdd);
+
+System.out.println(b1.apply("baby","chick")); //baby chick
+System.out.println(b1.apply("baby","chick")); //baby chick
 ```
 
-El ejemplo anterior
+En el primer ejemplo convierte una cadena a un entero, el segundo combina 2 cadenas para formar una nueva. 
+
+Los 2 primeros tipos en BiFunction son los tipos de entrada, el tercero es el tipo de la salida.
+
+#### Implementación de UnaryOperator y BinaryOperator
+
+UnaryOperator y BinaryOperator son casos especiales de function, ya que requieren que todos los parámetros de tipo sean del mismo tipo. 
+
+Un UnaryOperator transforma su valor en uno del mismo tipo. Por ejemplo, incrementar en 1 es una operación unaria.
+
+Un BinaryOperator fusiona dos valores en uno del mismo tipo. Sumar dos números es una operación binaria. 
+
+```java
+@FunctionalInterface
+public interface UnaryOperator<T> extends Function<T,T>{
+    //
+}
+
+@FunctionalInterface
+@public interface BinaryOperator<T> extends BiFunction<T,T,T>{
+    //
+}
+
+
+```
