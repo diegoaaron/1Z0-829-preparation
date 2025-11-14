@@ -637,5 +637,13 @@ En el ejemplo de UnaryOperator no necesitamos definir el retorno porque requiere
 
 En el ejemplo de BinaryOperator es más conciso que BiFunction, ya que el parámetro definido es suficiente porque todos son del mismo tipo.
 
-#### Revisando las interfaces funcionales
+#### Usando metodos convenientes en interfaces funcionales 
+
+Por definicion todas las interfaces funcionales tienen un único método abstracto. Sin embargo, esto no significa que solo pueden tener un método.
+
+Varias de las interfaces funcionales comunes proporcionan una serie de métodos de interfaz predeterminados útiles.
+
+![ch08_01_04.png](images/ch08_01_04.png)
+
+La tabla muestra los métodos convenientes en las interfaces funcionales principales, BiConsumer, BiFunction y BiPredicate tienen similares métodos. 
 
